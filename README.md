@@ -1,1 +1,1 @@
-# NPU
+# Entropic-NPU
