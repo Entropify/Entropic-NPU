@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TEAM-A-hardware-fpga</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <style>
+    html { font-size: 15px; }
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.5; color: #1f2328; max-width: 62rem;
+      margin: 2rem auto; padding: 0 1.25rem;
+    }
+    h1 { font-size: 1.9rem; border-bottom: 2px solid #d0d7de; padding-bottom: .3rem; margin-top: 2rem; }
+    h2 { font-size: 1.45rem; border-bottom: 1px solid #e3e6ea; padding-bottom: .25rem; margin-top: 1.8rem; }
+    h3 { font-size: 1.15rem; margin-top: 1.4rem; }
+    h4 { font-size: 1rem; margin-top: 1.2rem; }
+    p, li { font-size: .95rem; }
+    code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: .88em;
+           background: #f2f3f5; padding: .1em .3em; border-radius: 3px; }
+    pre { background: #f6f8fa; border: 1px solid #e3e6ea; border-radius: 6px;
+          padding: .8rem; overflow-x: auto; }
+    pre code { background: none; padding: 0; font-size: .85rem; line-height: 1.35; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .88rem; }
+    th, td { border: 1px solid #c9ced6; padding: .35rem .55rem; text-align: left; vertical-align: top; }
+    th { background: #eef1f4; font-weight: 600; }
+    tr:nth-child(even) td { background: #fafbfc; }
+    blockquote { border-left: 4px solid #d0d7de; margin-left: 0; padding-left: 1rem; color: #4a5158; }
+    hr { border: none; border-top: 1px solid #d0d7de; margin: 2rem 0; }
+    a { color: #0b5cad; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">TEAM-A-hardware-fpga</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#person-a--hardware--chip-design--fpga"
+id="toc-person-a--hardware--chip-design--fpga">PERSON A — Hardware /
+Chip Design / FPGA</a>
+<ul>
+<li><a href="#0-shared-contract-v10--frozen-do-not-change-unilaterally"
+id="toc-0-shared-contract-v10--frozen-do-not-change-unilaterally">§0
+SHARED CONTRACT v1.0 — FROZEN. Do not change unilaterally.</a></li>
+<li><a href="#1-artifacts-person-a-owns"
+id="toc-1-artifacts-person-a-owns">§1 Artifacts Person A owns</a></li>
+<li><a href="#2-what-person-a-must-learn"
+id="toc-2-what-person-a-must-learn">§2 What Person A must learn</a></li>
+<li><a
+href="#3-toolchain-setup-do-this-in-week-1-before-any-design-work"
+id="toc-3-toolchain-setup-do-this-in-week-1-before-any-design-work">§3
+Toolchain setup (do this in week 1, before any design work)</a></li>
+<li><a href="#4-person-a-implementation-plan"
+id="toc-4-person-a-implementation-plan">§4 Person A implementation
+plan</a></li>
+<li><a
+href="#5-joint-work--sections-that-require-person-a-and-person-b-together"
+id="toc-5-joint-work--sections-that-require-person-a-and-person-b-together">§5
+JOINT WORK — sections that require Person A and Person B
+together</a></li>
+<li><a href="#6-interfaces-what-you-own-vs-what-you-consume"
+id="toc-6-interfaces-what-you-own-vs-what-you-consume">§6 Interfaces:
+what you own vs. what you consume</a></li>
+<li><a href="#7-things-person-a-must-never-do"
+id="toc-7-things-person-a-must-never-do">§7 Things Person A must never
+do</a></li>
+<li><a href="#8-risks-specific-to-person-a"
+id="toc-8-risks-specific-to-person-a">§8 Risks specific to Person
+A</a></li>
+<li><a href="#9-schedule-aligned-with-person-bs-document"
+id="toc-9-schedule-aligned-with-person-bs-document">§9 Schedule (aligned
+with Person B's document)</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="person-a--hardware--chip-design--fpga">PERSON A — Hardware /
+Chip Design / FPGA</h1>
+<p><strong>Role:</strong> own everything between "a hex file exists" and
+"the FPGA produces the right number". RTL, memory architecture,
+clocking, constraints, timing closure, bitstream, on-board debug.</p>
+<p><strong>Mission:</strong> an NPU in Verilog on the Basys3 (XC7A35T)
+that takes a 50×50 grayscale image over UART and returns a digit class,
+with every intermediate number byte-identical to Person B's integer
+model.</p>
+<p><strong>"Done" for this role</strong> = a bitstream that (a) passes
+100% of the frozen test-vector regression in simulation, (b) closes
+timing with positive WNS at the design clock, (c) classifies 20/20 of
+Person B's hand-drawn digits on real hardware with the same result as
+the golden model, (d) reports its own utilisation / latency / baud
+numbers into <code>docs/</code> that Person B can cite.</p>
+<p><strong>Companion document:</strong>
+<code>TEAM-B-software-ai.md</code>. §0 (the contract) is identical in
+both files.</p>
+<hr />
+<h2 id="0-shared-contract-v10--frozen-do-not-change-unilaterally">§0
+SHARED CONTRACT v1.0 — FROZEN. Do not change unilaterally.</h2>
+<p>This is the interface between the two halves of the project. It is
+the <em>only</em> thing that keeps two people working independently from
+producing two incompatible halves. Any change requires both people to
+agree, bumps the version, and means Person B re-exports vectors and
+Person A re-runs the full regression.</p>
+<h3 id="01-numeric-spec">0.1 Numeric spec</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>v1 (MLP, first light)</th>
+<th>v2 (CNN, the real NPU)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input image</td>
+<td>uint8, 28×28, row-major, <strong>255 = ink, 0 =
+background</strong></td>
+<td>uint8, 50×50, same convention</td>
+</tr>
+<tr>
+<td>Activations</td>
+<td>uint8, zero-point 0, per-tensor power-of-two scale
+<code>2^-n</code></td>
+<td>same</td>
+</tr>
+<tr>
+<td>Weights</td>
+<td>int8, per-tensor scale <code>2^-m</code></td>
+<td>int8, per-tensor (per-channel from v2.1)</td>
+</tr>
+<tr>
+<td>Bias</td>
+<td>int32, pre-scaled by the exporter into accumulator units</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Accumulator</td>
+<td>int32</td>
+<td>int32 (≥24 bits guaranteed used)</td>
+</tr>
+<tr>
+<td>Requantisation</td>
+<td><code>sat_u8(round_half_away_from_zero(acc &gt;&gt; s))</code>,
+<code>s</code> integer ≥ 0</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Multiplier <code>M</code></td>
+<td><strong>always 1</strong> (power-of-two scales only — requant is a
+shift)</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Activation fn</td>
+<td>ReLU (negative → 0) then saturate to uint8</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Pooling</td>
+<td>n/a</td>
+<td>max, 2×2 stride 2, valid (no padding)</td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>none (valid)</td>
+<td>none (valid)</td>
+</tr>
+<tr>
+<td>Argmax</td>
+<td><strong>lowest index wins</strong> on tie</td>
+<td>same</td>
+</tr>
+<tr>
+<td>Convolution order</td>
+<td>n/a</td>
+<td><code>[Cout][Cin][KH][KW]</code> row-major</td>
+</tr>
+</tbody>
+</table>
+<p>Rule that matters most: <strong>rounding is
+round-half-away-from-zero, not floor, not banker's.</strong> Both sides
+implement the same three lines and both have a unit test with negative
+and tie values.</p>
+<h3 id="02-model-v1-first-light-and-v2-target">0.2 Model v1 (first
+light) and v2 (target)</h3>
+<pre><code>v1: 784 -&gt; FC 64 -&gt; ReLU -&gt; FC 32 -&gt; ReLU -&gt; FC 10 -&gt; argmax        (28x28 input)
+v2: conv 3x3 (1-&gt;8) -&gt; ReLU -&gt; maxpool 2x2
+    -&gt; conv 3x3 (8-&gt;16) -&gt; ReLU -&gt; maxpool 2x2
+    -&gt; FC (1936-&gt;10) -&gt; argmax                                      (50x50 input)</code></pre>
+<h3 id="03-file-formats">0.3 File formats</h3>
+<ul>
+<li><code>rtl/hex/w&lt;N&gt;.hex</code> — one byte per line, lowercase
+two hex digits, <code>$readmemh</code>-compatible. FC:
+<code>[out][in]</code> row-major. Conv:
+<code>[Cout][Cin][KH][KW]</code>.</li>
+<li><code>rtl/hex/b&lt;N&gt;.hex</code> — int32 biases, one 8-digit hex
+word per line.</li>
+<li><code>model.json</code> — contract version, model name/id, layer
+list with dimensions, bit widths, scales as exponents, and the SHA-256
+of every <code>.hex</code> file. <strong>Person A's RTL and Person B's
+exporter both read it.</strong> If the SHA doesn't match what's in BRAM,
+the run is invalid.</li>
+</ul>
+<h3
+id="04-test-vectors-the-artifact-that-lets-person-a-work-without-person-b">0.4
+Test vectors (the artifact that lets Person A work without Person
+B)</h3>
+<pre><code>vectors/
+  manifest.json        {&quot;contract&quot;:&quot;1.0&quot;,&quot;model&quot;:&quot;mlp_v1&quot;,&quot;cases&quot;:[
+                          {&quot;id&quot;:0,&quot;in&quot;:&quot;case_0000.in.bin&quot;,&quot;dumps&quot;:[&quot;case_0000.l0.bin&quot;,...],
+                           &quot;logits&quot;:&quot;case_0000.logits.txt&quot;,&quot;argmax&quot;:7}, ...]}
+  case_0000.in.bin     uint8 input, row-major, 784 (v1) or 2500 (v2) bytes
+  case_0000.l0.bin     activation dump after layer 0, uint8 row-major
+  case_0000.logits.txt one int32 per line (10 lines) + final line &quot;argmax &lt;d&gt;&quot;</code></pre>
+<h3 id="05-host--device-interface-uart">0.5 Host ↔︎ device interface
+(UART)</h3>
+<ul>
+<li>Baud: <strong>1,000,000</strong> target (<code>115200</code> for
+bring-up). 8N1. Byte-level, no flow control.</li>
+<li>Frame:
+<code>0xA5 | OP | LEN_LO | LEN_HI | PAYLOAD[LEN] | CRC8 | 0x5A</code>
+(LEN little-endian, 16-bit).</li>
+<li>CRC8: poly <code>0x07</code>, init <code>0x00</code>, no reflection,
+no final XOR — over <code>OP..PAYLOAD</code> only.</li>
+<li>Response:
+<code>0x5A | (OP|0x80) | LEN_LO | LEN_HI | PAYLOAD | CRC8 | 0xA5</code>,
+same CRC definition.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>OP</th>
+<th>Name</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x01</code></td>
+<td>LOAD_IMG</td>
+<td>raw uint8 image, row-major</td>
+</tr>
+<tr>
+<td><code>0x02</code></td>
+<td>LOAD_WEIGHTS</td>
+<td>`layer_id(1)</td>
+</tr>
+<tr>
+<td><code>0x03</code></td>
+<td>START</td>
+<td>empty</td>
+</tr>
+<tr>
+<td><code>0x04</code></td>
+<td>GET_RESULT</td>
+<td>empty → returns `digit(1)</td>
+</tr>
+<tr>
+<td><code>0x05</code></td>
+<td>LOOPBACK</td>
+<td>echoes payload (bring-up / baud validation)</td>
+</tr>
+<tr>
+<td><code>0x06</code></td>
+<td>READ_LOGITS</td>
+<td>empty → 10 × int32 LE</td>
+</tr>
+<tr>
+<td><code>0x07</code></td>
+<td>DUMP_ACT</td>
+<td><code>layer_id(1)</code> → uint8 activation dump (<strong>debug
+builds only</strong>)</td>
+</tr>
+<tr>
+<td><code>0x08</code></td>
+<td>GET_INFO</td>
+<td>empty → contract major/minor, model id, P (parallelism), clock
+Hz</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="06-register-map-mmio-for-the-soft-core-path-or-an-equivalent-fsm-register-file">0.6
+Register map (MMIO, for the soft-core path or an equivalent FSM register
+file)</h3>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Name</th>
+<th>Dir</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x000</code></td>
+<td>CTRL</td>
+<td>W</td>
+<td>bit0 start, bit1 soft reset, bit2 abort</td>
+</tr>
+<tr>
+<td><code>0x004</code></td>
+<td>STATUS</td>
+<td>R</td>
+<td>bit0 busy, bit1 done, bit2 error (crc/protocol), bit3 weights
+loaded</td>
+</tr>
+<tr>
+<td><code>0x008</code></td>
+<td>RESULT</td>
+<td>R</td>
+<td><code>[3:0]</code> argmax digit</td>
+</tr>
+<tr>
+<td><code>0x00C</code></td>
+<td>VERSION</td>
+<td>R</td>
+<td><code>0x0001_0000</code> = contract 1.0</td>
+</tr>
+<tr>
+<td><code>0x010</code></td>
+<td>IMG_WADDR</td>
+<td>W</td>
+<td>image byte address</td>
+</tr>
+<tr>
+<td><code>0x014</code></td>
+<td>IMG_WDATA</td>
+<td>W</td>
+<td>image byte</td>
+</tr>
+<tr>
+<td><code>0x018</code></td>
+<td>W_WADDR</td>
+<td>W</td>
+<td>weight byte address (within the layer selected by
+<code>W_LAYER</code>)</td>
+</tr>
+<tr>
+<td><code>0x01C</code></td>
+<td>W_DATA</td>
+<td>W</td>
+<td>weight byte</td>
+</tr>
+<tr>
+<td><code>0x020</code></td>
+<td>W_LAYER</td>
+<td>W</td>
+<td>layer id for weight writes</td>
+</tr>
+<tr>
+<td><code>0x030</code></td>
+<td>LOUT_ADDR</td>
+<td>W</td>
+<td>logit index 0..9</td>
+</tr>
+<tr>
+<td><code>0x034</code></td>
+<td>LOUT_DATA</td>
+<td>R</td>
+<td>int32 logit</td>
+</tr>
+</tbody>
+</table>
+<p>All multi-byte registers are little-endian;
+<code>IMG_WADDR</code>/<code>W_WADDR</code> auto-increment on write if
+bit31 is set.</p>
+<h3 id="07-budgets-both-people-design-to-these">0.7 Budgets (both people
+design to these)</h3>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Value</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Design clock</td>
+<td>100 MHz (Basys3 W5), 200 MHz only if it closes</td>
+<td>timing closure target</td>
+</tr>
+<tr>
+<td>Parallel MACs <code>P</code></td>
+<td>16 (v1) → 32 (v2) of 90 DSPs</td>
+<td>latency and adder-tree sizing</td>
+</tr>
+<tr>
+<td>Inference latency</td>
+<td>≤ 1 ms (v1), ≤ 500 µs (v2)</td>
+<td>Person B's benchmark target</td>
+</tr>
+<tr>
+<td>Link throughput</td>
+<td>≥ 1 Mbaud = 2500 B in 25 ms</td>
+<td>the system is <strong>link-bound</strong>, not compute-bound</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>≥ 98.5% MNIST test (v1), ≥ 98.5% own-drawings (v2)</td>
+<td>gates on Person B</td>
+</tr>
+<tr>
+<td>BRAM</td>
+<td>≤ 40 of 50 blocks total</td>
+<td>leaves room for line buffers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-artifacts-person-a-owns">§1 Artifacts Person A owns</h2>
+<pre><code>rtl/
+  compute/   mac.v, mac_array.v, requant.v, relu.v, pool.v, argmax.v, conv_engine.v, fc_engine.v
+  memory/    weight_bram.v, img_buffer.v, line_buffer.v
+  io/        uart_rx.v, uart_tx.v, crc8.v, host_if.v
+  npu_top.v, top_basys3.v        (+ soc_wrapper.v if you use the R32 soft core)
+  hex/       (generated by Person B — read-only for you)
+sim/         tb_*.v (structural, by you) ; cocotb tests are Person B&#39;s (see §5)
+syn/         basys3.xdc, build_basys3.tcl
+docs/        utilisation.md, timing.md, latency.md</code></pre>
+<p><strong>Never hand-edit anything in <code>hex/</code>.</strong> If a
+weight is wrong, Person B re-exports.</p>
+<hr />
+<h2 id="2-what-person-a-must-learn">§2 What Person A must learn</h2>
+<h3 id="tier-a1--datapath-design-not-just-logic-weeks-14">Tier A1 —
+Datapath design, not just logic (weeks 1–4)</h3>
+<p>You already write synthesizable Verilog and have shipped a soft core.
+What's missing is <em>arithmetic architecture</em>: pipelining a
+multiply-accumulate, resource sharing, adder trees, and the latency/area
+tradeoff underneath every choice.</p>
+<ul>
+<li><strong>Steve Kilts, <em>Advanced FPGA Design: Architecture,
+Implementation, and Optimization</em></strong> — the single most
+relevant book. Read: pipelining, resource sharing, area/speed tradeoffs,
+clock domain crossing, coding for synthesis. <em>Why:</em> it is the
+book about building datapaths; almost every phase H1–H5 decision is in
+here. <a
+href="https://www.fpgarelated.com/books/27.php">https://www.fpgarelated.com/books/27.php</a></li>
+<li><strong>Uwe Meyer-Baese, <em>Digital Signal Processing with Field
+Programmable Gate Arrays</em></strong> — chapters on MAC design,
+pipelining, systolic FIR filters, distributed arithmetic. <em>Why:</em>
+a 2-D convolution engine is a systolic FIR filter with a different
+address generator; the accumulator-width and pipeline-stage reasoning
+transfers directly.</li>
+<li><strong>Pong P. Chu, <em>FPGA Prototyping by Verilog
+Examples</em></strong> — reference patterns for BRAM, FSM+datapath
+splitting, and testbench structure. <em>Why:</em> fast, concrete
+templates rather than theory.</li>
+<li><strong>Clifford Cummings' papers</strong> (nonblocking assignments,
+coding guidelines) — Sunset/Sunburst, <a
+href="http://www.sunburst-design.com/papers/">http://www.sunburst-design.com/papers/</a>.
+<em>Why:</em> the cheap way to never debug a sim/synth mismatch again.
+Your own history proves this matters: a wrong <code>$readmemh</code>
+path is silent and yields an all-zero ROM.</li>
+</ul>
+<p><strong>Exit test:</strong> you have a parameterized, pipelined
+<code>mac.v</code> (3 stages, signed int8 × int8 → int32) with a cocotb
+testbench, a positive-WNS timing report, and
+<code>report_utilization</code> showing DSP48E1 inference. You can
+explain to Person B where every bit of the accumulator width goes.</p>
+<h3
+id="tier-a2--the-dsp48e1-and-7-series-memory-in-detail-weeks-34">Tier A2
+— The DSP48E1 and 7-series memory, in detail (weeks 3–4)</h3>
+<p>Your gains come from using the hardened silicon instead of LUTs, and
+from knowing exactly what a BRAM block can and cannot be configured
+as.</p>
+<ul>
+<li><strong>UG479, <em>7 Series DSP48E1 Slice User Guide</em></strong> —
+the 25×18 multiplier, the 48-bit accumulator, the pre-adder, pipeline
+registers, MACC, SIMD modes. <em>Why:</em> the pre-adder and internal
+accumulator are how you cut LUT pressure on a 35T; also the source of
+truth for what infers and what doesn't. <a
+href="https://docs.amd.com/r/en-US/ug479-7series-dsp48e1">https://docs.amd.com/r/en-US/ug479-7series-dsp48e1</a></li>
+<li><strong>UG473, <em>7 Series FPGAs Memory Resources</em></strong> —
+RAMB36E1/RAMB18E1, width configurations (1/2/4/9/18/36), simple vs true
+dual port, cascade, and what "byte-wide" really gives you (4 KiB per
+block). <a
+href="https://docs.amd.com/r/en-US/ug473-7series-memory-resources">https://docs.amd.com/r/en-US/ug473-7series-memory-resources</a></li>
+<li><strong>UG901 <em>Synthesis</em>, UG903 <em>Constraints</em>, UG949
+<em>Methodology</em>, UG906 <em>Timing Analysis</em></strong> — read
+UG901's RAM/ROM inference coding patterns and UG906's timing-report
+sections. <em>Why:</em> you will read a routed timing report a hundred
+times; learn to find the critical path from the report instead of
+guessing.</li>
+<li><strong>Xilinx WP486, <em>Deep Learning with INT8 Optimization on
+Xilinx Devices</em></strong> — the vendor's account of int8 on DSP48.
+Short, and it frames why int8 is the natural precision on this silicon.
+<a
+href="https://docs.amd.com/v/u/en-US/wp486-deep-learning-int8">https://docs.amd.com/v/u/en-US/wp486-deep-learning-int8</a></li>
+</ul>
+<p><strong>Exit test:</strong> you can state, without the tool, how many
+DSP48E1 slices a P-wide int8 MAC array uses, what the accumulator width
+must be for a 3×3×16-tap dot product, and how many 36 Kb blocks a 20 KiB
+weight set consumes (answer: 5).</p>
+<h3 id="tier-a3--accelerator-architecture-vocabulary-weeks-47">Tier A3 —
+Accelerator architecture vocabulary (weeks 4–7)</h3>
+<p>You can build any of these in RTL; the point is choosing the one that
+fits 90 DSPs and 225 KiB.</p>
+<ul>
+<li><strong>Sze, Chen, Yang, Emer — <em>Efficient Processing of Deep
+Neural Networks</em></strong> (Synthesis Lectures). Free precursor
+paper: <em>Efficient Processing of Deep Neural Networks: A Tutorial and
+Survey</em>, arXiv:1703.09039. <em>Why:</em> dataflows
+(weight-stationary / output-stationary / row-stationary), loop tiling
+and unrolling, the memory hierarchy, and the arithmetic-intensity
+reasoning that decides your architecture.</li>
+<li><strong>Chen et al., Eyeriss (ISCA 2016)</strong> and <strong>Jouppi
+et al., TPU (ISCA 2017)</strong> — read for the architecture, skim the
+numbers. <em>Why:</em> the two canonical array designs your Phase H5
+sits between.</li>
+<li><strong>Umuroglu et al., FINN (FPGA 2017)</strong> +
+<code>Xilinx/finn</code> docs — <em>Why:</em> how a dataflow
+accelerator's control and parallelism are structured; also tells you
+what you're deliberately NOT adopting.</li>
+<li><strong>MIT 6.5940 "TinyML and Efficient Deep Learning
+Computing"</strong>, the "Hardware Acceleration" and "Quantization"
+lectures — <a
+href="https://hanlab.mit.edu/courses">https://hanlab.mit.edu/courses</a>.
+<em>Why:</em> shared vocabulary with Person B; watch these two lectures
+together so you both use the same words for the same things.</li>
+</ul>
+<p><strong>Exit test:</strong> for the v2 CNN you can name, with
+numbers, the dataflow you chose, the tile sizes, how many cycles each
+layer takes at P=32, and where every byte of weight and activation
+storage lives.</p>
+<h3 id="tier-a4--verification-and-bring-up-discipline-continuous">Tier
+A4 — Verification and bring-up discipline (continuous)</h3>
+<ul>
+<li><strong>cocotb docs</strong> — <a
+href="https://docs.cocotb.org/">https://docs.cocotb.org/</a>. You'll
+review Person B's tests even though they write them.</li>
+<li><strong>Verilator / Icarus</strong> — your simulation of record
+(your own experience: xsim rejects forward-declared identifiers that
+synthesis and Icarus accept — simulate with Icarus).</li>
+<li><strong>ZipCPU tutorial + blog</strong> — <a
+href="https://zipcpu.com/tutorial">https://zipcpu.com/tutorial</a>, and
+<em>Learning AXI: where to start?</em> <a
+href="https://zipcpu.com/blog/2022/05/07/learning-axi.html">https://zipcpu.com/blog/2022/05/07/learning-axi.html</a>.
+<em>Why:</em> FSM/datapath style, handshake discipline, and the
+"assertions before waveforms" mindset. Read the AXI piece before you
+design <code>host_if.v</code> even though you won't use AXI — the
+valid/ready reasoning is the same.</li>
+<li><strong>Digilent Basys3 reference manual + master XDC</strong> — <a
+href="https://digilent.com/reference/programmable-logic/basys-3/reference-manual">https://digilent.com/reference/programmable-logic/basys-3/reference-manual</a>
+and <a
+href="https://github.com/Digilent/digilent-xdc">https://github.com/Digilent/digilent-xdc</a>.
+Verified pins for your board: <code>clk</code> W5 (100 MHz),
+<code>btnC</code> U18, UART <code>RsRx</code> B18 / <code>RsTx</code>
+A18, LEDs LD0..U15 start at U16,E19,U19,V19,W18,U15,U14,V14,V13,V3.
+<em>Why:</em> never trust recalled pin numbers — a wrong pin is a silent
+dead signal.</li>
+</ul>
+<p><strong>Exit test:</strong> an ILA or a register-file debug path that
+lets you see the state of a stalled FSM in one build, rather than
+re-synthesising to add a probe.</p>
+<h3 id="tier-a5--optional-only-if-you-want-the-comparison-post-v2">Tier
+A5 — Optional, only if you want the comparison (post-v2)</h3>
+<ul>
+<li><strong>AMD UG1399 <em>Vitis HLS User Guide</em></strong> — <a
+href="https://docs.amd.com/r/en-US/ug1399-vitis-hls">https://docs.amd.com/r/en-US/ug1399-vitis-hls</a>.
+<em>Why:</em> to write the "hand-written RTL vs HLS on the same network"
+section of the write-up. Not on the critical path.</li>
+</ul>
+<h3 id="do-not-spend-time-on">Do NOT spend time on</h3>
+<p>Vitis AI / DPU (Zynq UltraScale+ and Zynq-7000 with DDR only — an
+Artix-7 pure-PL part is not a supported target), NVDLA (needs a big FPGA
++ DDR), FINN's supported flow (Zynq PS+DMA; Artix-7 use is
+community-hacked — see <code>Xilinx/finn</code> discussion #508),
+float32 anywhere in hardware, or a 16×16 TPU-style systolic array as v1.
+Build the 16-lane MAC array first; earn the systolic array in H5.</p>
+<h3 id="reading-order">Reading order</h3>
+<p>Wk 1–2 Kilts (pipelining, resource sharing) + Cummings; Wk 2–3 UG479
++ UG473; Wk 3–4 Meyer-Baese (MAC, systolic FIR) + UG901/UG906; Wk 4–6
+Sze survey + the two MIT lectures with Person B; Wk 5–6 Eyeriss + TPU
+papers + FINN docs. Everything else is lookup.</p>
+<hr />
+<h2 id="3-toolchain-setup-do-this-in-week-1-before-any-design-work">§3
+Toolchain setup (do this in week 1, before any design work)</h2>
+<ul>
+<li>Vivado ML <strong>Standard</strong> — free, covers Artix-7 up to
+100T, no license file. Install the Basys3 board files.</li>
+<li>Batch build flow (never the GUI for regressions):
+<code>vivado.bat -mode batch -source build_basys3.tcl</code>. Read
+<code>report_utilization</code> and <code>report_timing_summary</code>
+output files programmatically each build.</li>
+<li>Icarus + cocotb for simulation; GTKWave for waveforms.</li>
+<li><code>openFPGALoader</code> or Vivado Hardware Manager for
+programming; kill stale serial readers (only one process can hold a COM
+port — a lingering Python reader makes working hardware look dead).</li>
+<li>Repo skeleton with <code>make sim</code>, <code>make synth</code>,
+<code>make prog</code>, <code>make regress</code> targets from day
+one.</li>
+</ul>
+<hr />
+<h2 id="4-person-a-implementation-plan">§4 Person A implementation
+plan</h2>
+<h3 id="h0--skeleton-loopback-and-the-baud-ceiling-week-1">H0 —
+Skeleton, loopback, and the baud ceiling (week 1)</h3>
+<p>Goal: prove the toolchain and measure the link before anything is
+designed around it.</p>
+<ul>
+<li>Repo skeleton; batch TCL build; blink; LED readout of a
+counter.</li>
+<li><code>uart_tx.v</code> / <code>uart_rx.v</code> /
+<code>crc8.v</code> + a loopback FSM implementing OP
+<code>0x05</code>.</li>
+<li><strong>Measure your real maximum error-free baud over 10⁷
+bytes</strong> (FT2232H does up to 12 Mbaud; 1 Mbaud should be clean,
+validate it).</li>
+<li>Deliverable: <code>docs/latency.md</code> with the measured baud;
+loopback at the chosen rate.</li>
+<li>Exit: Person B's 40-line host script round-trips 10⁷ bytes with zero
+CRC errors.</li>
+</ul>
+<h3 id="h1--mac-array-requant-against-frozen-vectors-weeks-23">H1 — MAC,
+array, requant, against frozen vectors (weeks 2–3)</h3>
+<ul>
+<li><code>mac.v</code>: signed int8×int8→int32, 3 stages, valid/clear,
+no accumulation on invalid beats.</li>
+<li><code>mac_array.v</code>: P=16 lanes + registered adder tree; verify
+the DSP count in the synthesis log.</li>
+<li><code>requant.v</code>: shift, round-half-away-from-zero, saturate
+to uint8. <strong>Test with the nasty values</strong>: max/min int32,
+exact <code>.5</code> ties, negative values, saturation both ends.</li>
+<li><code>relu.v</code>, <code>argmax.v</code> (lowest index on tie),
+<code>pool.v</code>.</li>
+<li>Deliverable: cocotb regression (written by Person B, run by you)
+passing 100% on these modules.</li>
+<li>Exit: every module byte-identical to the golden vectors, P=16,
+positive WNS at 100 MHz.</li>
+</ul>
+<h3 id="h2--weight-memory-and-the-layer-engine-week-4">H2 — Weight
+memory and the layer engine (week 4)</h3>
+<ul>
+<li><code>weight_bram.v</code>: <code>$readmemh</code> from
+<code>rtl/hex/</code>, absolute path via a
+<code>parameter INIT_FILE</code>. <strong>Grep every synthesis log for
+<code>$readmem data file ... is read successfully</code></strong> — a
+wrong path is silent and gives you an all-zero ROM, which looks exactly
+like a math bug.</li>
+<li><code>fc_engine.v</code>: FC layer as a dot-product loop over BRAM
+rows, one weight row per cycle, accumulator cleared per output neuron;
+<code>img_buffer.v</code> for the input image.</li>
+<li>Layer FSM: address generation, <code>valid</code> gating, done/busy,
+and a per-layer scale/shift taken from the register file (so Person B
+can retune scales without an RTL change).</li>
+<li>Exit: layer 1 of v1 matches Person B's <code>case_0000.l0.bin</code>
+byte-for-byte in simulation.</li>
+</ul>
+<h3 id="h3--accelerator-integration-and-host-interface-week-5">H3 —
+Accelerator integration and host interface (week 5)</h3>
+<ul>
+<li><code>npu_top.v</code>: three layer engines chained, argmax, MMIO
+register file per §0.6.</li>
+<li><code>host_if.v</code>: UART framer for OP
+<code>0x01</code>/<code>0x02</code>/<code>0x03</code>/<code>0x04</code>/<code>0x06</code>/<code>0x08</code>;
+write into <code>img_buffer</code> and the weight BRAMs;
+<code>0x07</code> DUMP_ACT behind a debug build flag.</li>
+<li>Integration choice: bare RTL host FSM (simplest, recommended for v1)
+<strong>or</strong> reuse your R32 RISC-V core as host with the NPU at
+<code>0x4000_0000</code> — you already have that MMIO pattern working on
+this board.</li>
+<li>Exit: full-network simulation matching all vectors;
+<code>GET_INFO</code> returns contract 1.0 / model id / P / clock.</li>
+</ul>
+<h3 id="h4--v1-on-the-board-weeks-67--first-light">H4 — v1 on the board
+(weeks 6–7) — <strong>first light</strong></h3>
+<ul>
+<li>Program, load weights over UART (~51 KiB = 522 ms at 1 Mbaud, once
+per boot), send an image, read the result. Prediction on LEDs
+<code>LD3:0</code> and the 7-seg display; raw logits available over
+<code>READ_LOGITS</code>.</li>
+<li>Bring-up order that finds bugs fastest: LOOPBACK → GET_INFO →
+LOAD_WEIGHTS + status bit3 → START + busy → RESULT. Add a visible status
+register on the LEDs before you need it.</li>
+<li>Exit (this is the v1 project milestone): <strong>20/20 of Person B's
+drawn digits classify identically to the golden model, on
+hardware.</strong> Log utilisation and measured latency in
+<code>docs/</code>.</li>
+</ul>
+<h3
+id="h5--the-cnn-engine-at-5050-weeks-812--the-actual-npu-and-the-critical-path">H5
+— The CNN engine at 50×50 (weeks 8–12) — the actual NPU, and the
+critical path</h3>
+<ul>
+<li><code>line_buffer.v</code>: 3-row circular buffer so one new
+pixel/cycle feeds a 3×3 window; <strong>no im2col in
+memory</strong>.</li>
+<li><code>conv_engine.v</code>: weight-stationary, <code>Cout</code>
+filters spread across PEs, weights loaded once per layer, activations
+streamed; 9 taps is the natural inner dimension.</li>
+<li>Streaming 2×2 maxpool on the conv output; reuse
+<code>fc_engine.v</code> as an output-stationary tiled FC
+(1936→10).</li>
+<li>Accumulator width for 3×3×16 taps; then try the DSP48E1
+<strong>internal accumulator (MACC)</strong> and the
+<strong>pre-adder</strong> to fold two window terms before the multiply
+— both are real LUT savings on a 35T.</li>
+<li>Revisit 200 MHz via MMCM only if you are throughput-starved after
+the 1 Mbaud link is saturated (you probably won't be — the system is
+link-bound).</li>
+<li>Exit: v2 CNN classifies on hardware, timing closed at the chosen
+clock, latency ≤ 500 µs, byte-exact against golden vectors.</li>
+</ul>
+<h3 id="h6--performance-robustness-and-the-write-up-weeks-1314">H6 —
+Performance, robustness, and the write-up (weeks 13–14)</h3>
+<ul>
+<li>Full regression re-run against the final vectors;
+utilisation/timing/latency tables into <code>docs/</code>.</li>
+<li>Robustness: framing errors, CRC failure, mid-frame reset, weight
+reload while idle — error bit must be visible and recoverable, not a
+silent wedge.</li>
+<li>Optional stretch, only if the core is done: BNN variant (XNOR +
+popcount in LUTs instead of DSPs) for a comparison table, or a port to
+Arty A7-100T (same RTL, 2.7× BRAM, 240 DSP) in one TCL change.</li>
+</ul>
+<hr />
+<h2
+id="5-joint-work--sections-that-require-person-a-and-person-b-together">§5
+JOINT WORK — sections that require Person A and Person B together</h2>
+<p>These are not "nice to sync up" items. Each one produces an artifact
+neither person can produce alone.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>When</th>
+<th>What</th>
+<th>Deliverable / exit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>J0</strong></td>
+<td>Week 1</td>
+<td><strong>Contract freeze.</strong> Walk §0 line by line. Each person
+independently writes a CRC8 implementation and a frame parser; compare
+against 5 published test frames. Agree the register map, vector format,
+numeric spec, and the rule that changes are joint.</td>
+<td><code>CONTRACT.md</code> v1.0 committed, plus a shared
+<code>protocol_frames.txt</code> both parsers agree on.</td>
+</tr>
+<tr>
+<td><strong>J1</strong></td>
+<td>Weeks 3–5</td>
+<td><strong>Golden vector handoff.</strong> B publishes vectors + the
+integer model; A runs them in cocotb. Every mismatch is diagnosed
+<em>together</em> — is it the RTL or the spec? This is where rounding
+bugs and accumulator-width bugs surface.</td>
+<td>MAC/array/requant/layer regression at 100%, and a written note of
+every numeric discrepancy found and which side it was.</td>
+</tr>
+<tr>
+<td><strong>J2</strong></td>
+<td>Weeks 6–7</td>
+<td><strong>First-light bring-up session.</strong> Both people at the
+board: A watches LEDs/ILA and reloads bitstreams, B runs the host driver
+and reports what the wire actually carried. Do not do the first hardware
+run of a real image alone.</td>
+<td>20/20 drawn digits match the integer model on hardware.</td>
+</tr>
+<tr>
+<td><strong>J3</strong></td>
+<td>Weeks 8–12, on every numeric change</td>
+<td><strong>Change control on the contract.</strong> If either person
+wants different bit widths, a per-channel scale, a new rounding mode, or
+an extra opcode: both agree, version bumps, B re-exports all vectors and
+hex, A re-runs the full regression. Nobody edits the contract
+silently.</td>
+<td>Version-stamped <code>CONTRACT.md</code> + regenerated vectors +
+green regression.</td>
+</tr>
+<tr>
+<td><strong>J4</strong></td>
+<td>Monthly</td>
+<td><strong>Accuracy ↔︎ throughput tradeoff review.</strong> B brings the
+precision/accuracy table (int8 vs 4-bit vs 1-bit), A brings
+latency/utilization at each P. Decide <em>together</em> which point on
+the curve the project targets — this is an architecture decision, not
+either person's call.</td>
+<td>A one-page decision record in <code>docs/tradeoffs.md</code> with
+the numbers that justified it.</td>
+</tr>
+<tr>
+<td><strong>J5</strong></td>
+<td>Weeks 13–14</td>
+<td><strong>Demo and write-up.</strong> B's GUI/VGA assets and A's
+bitstream and measured numbers are one artifact. A supplies
+utilisation/timing/latency; B supplies accuracy/precision tables; both
+review the final report.</td>
+<td>Final demo + report/README with numbers both people can defend.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Standing rule:</strong> a "green" claim requires <em>A's
+regression log</em> AND <em>B's vector manifest SHA</em>. A bitstream
+run with mismatched hashes is not evidence.</p>
+<hr />
+<h2 id="6-interfaces-what-you-own-vs-what-you-consume">§6 Interfaces:
+what you own vs. what you consume</h2>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Owner</th>
+<th>You must</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rtl/**</code>, <code>syn/**</code> (XDC, TCL), bitstream</td>
+<td><strong>A</strong></td>
+<td>change freely, but never break register map or frame format</td>
+</tr>
+<tr>
+<td><code>hex/*.hex</code>, <code>model.json</code>,
+<code>vectors/**</code></td>
+<td><strong>B</strong></td>
+<td>treat as read-only input; report failures, don't patch</td>
+</tr>
+<tr>
+<td><code>sim/cocotb/**</code></td>
+<td><strong>B</strong> writes, A runs</td>
+<td>review the tests; you own the structural <code>tb_*.v</code></td>
+</tr>
+<tr>
+<td>Register map / UART ops / numeric spec (§0.4–0.6)</td>
+<td><strong>joint</strong></td>
+<td>change only via J3</td>
+</tr>
+<tr>
+<td>Contract version + SHA gate</td>
+<td><strong>joint</strong></td>
+<td>enforce it in your own flows</td>
+</tr>
+<tr>
+<td>Latency/throughput budget, accuracy target</td>
+<td><strong>joint</strong></td>
+<td>A is accountable for latency, B for accuracy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-things-person-a-must-never-do">§7 Things Person A must never
+do</h2>
+<ul>
+<li>Hand-edit a <code>.hex</code> or a vector file to make a test
+pass.</li>
+<li>Change the register map, an opcode, or a rounding rule without
+J3.</li>
+<li>Claim a result from a bitstream whose <code>model.json</code> SHA
+doesn't match the vectors used in simulation.</li>
+<li>Trust a recalled pin number instead of the Digilent master XDC.</li>
+<li>Add a debug probe (sampled PC on LEDs, a mux) and forget to remove
+it — a restore that silently fails ships the debug display in the next
+bitstream and misreports the design's state. Grep for the debug signal
+names and confirm zero references before building.</li>
+<li>Report "it works" from utilisation/timing reports alone; only a
+hardware classification counts.</li>
+</ul>
+<h2 id="8-risks-specific-to-person-a">§8 Risks specific to Person A</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silent all-zero weight ROM</td>
+<td>grep <code>read successfully</code> every build; assert a non-zero
+checksum of loaded weights in hardware</td>
+</tr>
+<tr>
+<td>Accumulating on invalid beats</td>
+<td><code>valid</code> gating + a cocotb test that injects invalid beats
+mid-accumulation</td>
+</tr>
+<tr>
+<td>Timing fails at 100 MHz</td>
+<td>find the critical path in the routed report before reducing the
+clock — usually a wide mux or an unregistered BRAM output</td>
+</tr>
+<tr>
+<td>BRAM over-budget when line buffers appear</td>
+<td>budget 40/50 blocks from the start; the CNN needs ~5 for weights,
+the rest is buffers</td>
+</tr>
+<tr>
+<td>Two builds disagree (GUI-held project lock)</td>
+<td>build into a separate project dir; never delete/recreate a dir the
+GUI has open</td>
+</tr>
+<tr>
+<td>Long debug loops</td>
+<td>visible status register + UART as the debug channel from H0
+onward</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-schedule-aligned-with-person-bs-document">§9 Schedule (aligned
+with Person B's document)</h2>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Person A</th>
+<th>Person B</th>
+<th>Joint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>H0 skeleton, loopback, baud measurement</td>
+<td>S0 environment, contract, host driver stub</td>
+<td><strong>J0</strong></td>
+</tr>
+<tr>
+<td>2–3</td>
+<td>H1 mac/array/requant</td>
+<td>S1 dataset + own-code trainer</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>H2 weight BRAM + layer engine</td>
+<td>S2 quantiser + exporter</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>H3 integration + host_if</td>
+<td>S3 integer golden model + vectors</td>
+<td><strong>J1</strong></td>
+</tr>
+<tr>
+<td>6–7</td>
+<td>H4 first light on board</td>
+<td>S4 host driver + drawing GUI</td>
+<td><strong>J2</strong></td>
+</tr>
+<tr>
+<td>8–9</td>
+<td>H5 line buffers + conv engine</td>
+<td>S5 own-data collection + retrain</td>
+<td></td>
+</tr>
+<tr>
+<td>10–12</td>
+<td>H5 conv+pool+FC v2, timing closure</td>
+<td>S6 benchmark harness, precision study</td>
+<td><strong>J4</strong></td>
+</tr>
+<tr>
+<td>13–14</td>
+<td>H6 robustness + number tables</td>
+<td>S7 demo assets, report sections</td>
+<td><strong>J3, J5</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Critical path: <strong>H5</strong>. Person B's work is front-loaded
+precisely so that A is never blocked waiting for weights or vectors.</p>
+</body>
+</html>
