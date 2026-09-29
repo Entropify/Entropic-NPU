@@ -1,7 +1,14 @@
 `default_nettype none
 
+`timescale 1ns/1ps
+
 // MAC n cheese
 // MAC(book) ew!
+
+
+//signal priority hierarchy:: freeze > load(first) > add(valid) > hold
+
+//control read acc when done is high
 
 module mac(
 
@@ -17,7 +24,7 @@ module mac(
     input logic signed [7:0] weight,
     input logic unsigned [7:0] activation,
 
-    output logic signed [31:0] acc,
+    output logic signed [31:0] acc, //beat in cycle t, acc valid in cycle t+3
     output logic valid_out,
     output logic done
 );
@@ -87,12 +94,12 @@ always_ff @(posedge clk, posedge rst) begin
         //pipeline stage 3
 
         if (freeze) acc <= acc;
-        else if (valid_s2 && first_s2) acc <= prod_r;
-        else if (valid_s2) acc <= acc + prod_r;
+        else if (valid_s2 && first_s2) acc <= {15'b0, prod_r};
+        else if (valid_s2) acc <= acc + {15'b0, prod_r};
 
         
         
-        valid_out <= (freeze) ? valid_out :  valid_s2;
+        valid_out <= (freeze) ? 1'b0 : valid_s2;
         done <= (freeze) ? 1'b0 : (valid_s2 && last_s2);
 
     end
