@@ -4,7 +4,6 @@
 
 
 
-
 module tb_mac;
 
     logic clk = 0, rst = 1;
@@ -45,7 +44,7 @@ module tb_mac;
 
 
 
-    always #5 clk = ~clk;       // 100 MHz clk
+    always #5 clk = ~clk;       // 100 mHz clk
 
 
 
@@ -89,7 +88,6 @@ module tb_mac;
     initial begin
 
         repeat(3) tick(); rst = 0; tick();          // reset FIRST
-        // cases
 
         $display("  checks: %0d    failures: %0d", checks, fails);
         if (fails != 0) $fatal(1, "verification failed");    // non-zero exit
