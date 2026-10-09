@@ -1,4 +1,5 @@
-*.jou]
+*.jou
+*.cpp
 *.log
 .Xil/
 *.cache/
