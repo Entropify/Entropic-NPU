@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Fri Oct  9 02:52:16 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_mac.vcd"
+[dumpfile_mtime] "Fri Oct  9 02:51:30 2026"
+[dumpfile_size] 8015
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_mac.gtkw"
+[timestart] 0
+[size] 1500 950
+[pos] -1 -1
+*-16.100000 125700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 297
+[signals_width] 170
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@28
+tb_mac.clk
+@22
+tb_mac.rst
+tb_mac.valid
+tb_mac.first
+tb_mac.last
+tb_mac.freeze
+tb_mac.weight[7:0]
+tb_mac.activation[7:0]
+tb_mac.acc[31:0]
+tb_mac.valid_out
+tb_mac.done
+tb_mac.dut.w_r[7:0]
+tb_mac.dut.act_r[8:0]
+tb_mac.dut.valid_s1
+tb_mac.dut.first_s1
+tb_mac.dut.last_s1
+tb_mac.dut.prod_r[16:0]
+tb_mac.dut.valid_s2
+tb_mac.dut.first_s2
+tb_mac.dut.last_s2
+[pattern_trace] 1
+[pattern_trace] 0

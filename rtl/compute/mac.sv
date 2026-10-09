@@ -94,8 +94,8 @@ always_ff @(posedge clk, posedge rst) begin
         //pipeline stage 3
 
         if (freeze) acc <= acc;
-        else if (valid_s2 && first_s2) acc <= {15'b0, prod_r};
-        else if (valid_s2) acc <= acc + {15'b0, prod_r};
+        else if (valid_s2 && first_s2) acc <= {{15{prod_r[16]}}, prod_r};
+        else if (valid_s2) acc <= acc + {{15{prod_r[16]}}, prod_r};
 
         
         
