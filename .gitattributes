@@ -1,1 +1,3 @@
 *.cpp linguist-detectable=false
+
+sim/build/* linguist-vendored
