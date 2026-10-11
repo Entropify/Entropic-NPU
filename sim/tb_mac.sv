@@ -129,7 +129,7 @@ module tb_mac;
 
     initial begin
 
-        $dumpfile("sim/tb_mac.vcd");        // run from the project root
+        $dumpfile("sim/tb_mac.vcd");
         $dumpvars(0, tb_mac);
 
         repeat(3) tick();
