@@ -1,3 +1,6 @@
 *.cpp linguist-detectable=false
 
 sim/build/* linguist-vendored
+
+sim/build/** linguist-vendored linguist-generated=true
+*.vcd      linguist-generated=true

@@ -1,5 +1,5 @@
 *.jou
-*.cpp
+
 *.log
 .Xil/
 *.cache/
@@ -8,3 +8,5 @@
 *.hw/
 *.ip_user_files/
 *.build/
+sim/build/
+*.vcd
