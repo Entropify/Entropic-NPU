@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Thu Nov  5 07:13:05 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_adder_tree.vcd"
+[dumpfile_mtime] "Thu Nov  5 07:11:22 2026"
+[dumpfile_size] 5036
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_adder_tree.gtkw"
+[timestart] 0
+[size] 1520 908
+[pos] -1 -1
+*-14.000000 34480 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_adder_tree.
+[sst_width] 297
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 264
+@28
+tb_adder_tree.dut.clk
+@29
+tb_adder_tree.dut.rst
+@28
+tb_adder_tree.dut.capture
+tb_adder_tree.dut.freeze
+@22
+tb_adder_tree.dut.d0[31:0]
+tb_adder_tree.dut.d1[31:0]
+tb_adder_tree.dut.d2[31:0]
+tb_adder_tree.dut.d3[31:0]
+tb_adder_tree.dut.d4[31:0]
+tb_adder_tree.dut.d5[31:0]
+tb_adder_tree.dut.d6[31:0]
+tb_adder_tree.dut.d7[31:0]
+tb_adder_tree.dut.d8[31:0]
+tb_adder_tree.dut.sum[31:0]
+tb_adder_tree.dut.sum_comb[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
