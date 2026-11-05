@@ -8,3 +8,5 @@
 *.hw/
 *.ip_user_files/
 *.build/
+
+*sim/
