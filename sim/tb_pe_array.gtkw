@@ -1,0 +1,81 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Fri Nov  6 04:40:16 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_pe_array.vcd"
+[dumpfile_mtime] "Fri Nov  6 04:23:16 2026"
+[dumpfile_size] 127342
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_pe_array.gtkw"
+[timestart] 0
+[size] 2560 1328
+[pos] -27 -24
+*-16.000000 284400 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_pe_array.
+[treeopen] tb_pe_array.dut.
+[treeopen] tb_pe_array.dut.generate_taps_9[0].
+[treeopen] tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].
+[sst_width] 336
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 411
+@28
+tb_pe_array.dut.clk
+tb_pe_array.dut.rst
+tb_pe_array.dut.valid
+tb_pe_array.dut.first
+tb_pe_array.dut.last
+tb_pe_array.dut.freeze
+@22
+tb_pe_array.dut.act[71:0]
+tb_pe_array.dut.weight[287:0]
+tb_pe_array.dut.dot[127:0]
+tb_pe_array.dut.dot_q[127:0]
+@28
+tb_pe_array.dut.done
+@23
+tb_pe_array.dut.acc_debug[1151:0]
+@28
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.capture
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.clk
+@22
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d0[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d1[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d2[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d3[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d4[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d5[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d6[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d7[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.d8[31:0]
+@28
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.freeze
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.rst
+@22
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.sum[31:0]
+tb_pe_array.dut.generate_lane_adder_trees[0].u_tree_probe.sum_comb[31:0]
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.acc[31:0]
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.act_r[8:0]
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.activation[7:0]
+@28
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.clk
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.done
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.first
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.first_s1
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.first_s2
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.freeze
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.last
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.last_s1
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.last_s2
+@22
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.prod_r[16:0]
+@28
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.rst
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.valid
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.valid_out
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.valid_s1
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.valid_s2
+@22
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.w_r[7:0]
+tb_pe_array.dut.generate_taps_9[0].generate_lanes_4[0].mac_unit.weight[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

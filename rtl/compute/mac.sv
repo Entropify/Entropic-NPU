@@ -93,6 +93,7 @@ always_ff @(posedge clk, posedge rst) begin
         first_s2 <= (freeze) ? first_s2 : first_s1;
         last_s2 <= (freeze) ? last_s2 : last_s1;
 
+        
         //pipeline stage 3
 
         if (freeze) acc <= acc;
