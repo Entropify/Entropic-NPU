@@ -173,7 +173,7 @@ module tb_pe_array;
             $display("      pass  acc(%0d,%0d) %-26s = %0d", tap, lane, what, v);
     end endtask
 
-    // =====================================================================
+
     initial begin
 
         $dumpfile("sim/tb_pe_array.vcd");

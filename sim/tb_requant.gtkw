@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Sat Nov  7 06:48:42 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_requant.vcd"
+[dumpfile_mtime] "Sat Nov  7 06:25:54 2026"
+[dumpfile_size] 8259
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_requant.gtkw"
+[timestart] 0
+[size] 1920 981
+[pos] -27 -24
+*-16.000000 47100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_requant.
+[treeopen] tb_requant.dut.
+[sst_width] 297
+[signals_width] 265
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+tb_requant.dut.clk
+tb_requant.dut.rst
+tb_requant.dut.valid_in
+tb_requant.dut.valid_out
+@24
+tb_requant.dut.shift[5:0]
+@420
+tb_requant.dut.acc0[31:0]
+tb_requant.dut.acc1[31:0]
+tb_requant.dut.acc2[31:0]
+tb_requant.dut.acc3[31:0]
+tb_requant.dut.bias0[31:0]
+tb_requant.dut.bias1[31:0]
+tb_requant.dut.bias2[31:0]
+tb_requant.dut.bias3[31:0]
+tb_requant.dut.q0[7:0]
+tb_requant.dut.q1[7:0]
+tb_requant.dut.q2[7:0]
+tb_requant.dut.q3[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
