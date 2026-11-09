@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Mon Nov  9 05:34:11 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_pool.vcd"
+[dumpfile_mtime] "Mon Nov  9 04:35:19 2026"
+[dumpfile_size] 371870
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_pool.gtkw"
+[timestart] 21078000
+[size] 2560 1328
+[pos] -27 -24
+*-17.000000 21704200 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_pool.
+[treeopen] tb_pool.dut.
+[sst_width] 297
+[signals_width] 328
+[sst_expanded] 1
+[sst_vpaned_height] 411
+@28
+tb_pool.rst
+tb_pool.dut.clk
+@24
+tb_pool.dut.valid_in
+tb_pool.dut.valid_out
+tb_pool.dut.g[1:0]
+tb_pool.dut.g_out[1:0]
+tb_pool.dut.x[5:0]
+tb_pool.dut.y[5:0]
+tb_pool.dut.in0[7:0]
+tb_pool.dut.in1[7:0]
+tb_pool.dut.in2[7:0]
+tb_pool.dut.in3[7:0]
+tb_pool.dut.out0[7:0]
+tb_pool.dut.out1[7:0]
+tb_pool.dut.out2[7:0]
+tb_pool.dut.out3[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
