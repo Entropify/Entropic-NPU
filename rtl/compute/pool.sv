@@ -6,18 +6,18 @@
 module pool #(parameter int W = 48)
 
 (
-    input logic clk,
-    input logic rst,
+    input wire logic clk,
+    input wire logic rst,
 
-    input logic valid_in,
-    input logic [1:0] g,
-    input logic [5:0] x,
-    input logic [5:0] y,
+    input wire logic valid_in,
+    input wire logic [1:0] g,
+    input wire logic [5:0] x,
+    input wire logic [5:0] y,
 
-    input logic [7:0] in0,
-    input logic [7:0] in1,
-    input logic [7:0] in2,
-    input logic [7:0] in3,
+    input wire logic [7:0] in0,
+    input wire logic [7:0] in1,
+    input wire logic [7:0] in2,
+    input wire logic [7:0] in3,
 
     output logic valid_out,
     output logic [1:0] g_out, //this shows which group current output data belogns to

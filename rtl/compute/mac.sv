@@ -14,17 +14,17 @@
 
 module mac(
 
-    input logic clk,
-    input logic rst,
-    input logic valid,
-    input logic first, //fresh new data, loads the product calculated this cycle right into acc to replace current acc
+    input wire logic clk,
+    input wire logic rst,
+    input wire logic valid,
+    input wire logic first, //fresh new data, loads the product calculated this cycle right into acc to replace current acc
 
-    input logic last, //giving upper level fsm a flag to tell it basically that ts data is all ready
+    input wire logic last, //giving upper level fsm a flag to tell it basically that ts data is all ready
 
-    input logic freeze, //freeze the entire mac, all 3 pipelines
+    input wire logic freeze, //freeze the entire mac, all 3 pipelines
 
-    input logic signed [7:0] weight,
-    input logic unsigned [7:0] activation,
+    input wire logic signed [7:0] weight,
+    input wire logic unsigned [7:0] activation,
 
     output logic signed [31:0] acc, //beat in cycle t, acc valid in cycle t+3
     output logic valid_out,

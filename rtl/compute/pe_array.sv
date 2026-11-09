@@ -13,16 +13,16 @@
 module pe_array #(parameter taps = 9, parameter lanes = 4)
 
 (
-    input logic clk,
-    input logic rst,
+    input wire logic clk,
+    input wire logic rst,
 
-    input logic valid,
-    input logic first,
-    input logic last,
-    input logic freeze,
+    input wire logic valid,
+    input wire logic first,
+    input wire logic last,
+    input wire logic freeze,
 
-    input logic [8*taps-1:0] act,
-    input logic [8*taps*lanes-1:0] weight,
+    input wire logic [8*taps-1:0] act,
+    input wire logic [8*taps*lanes-1:0] weight,
 
     output logic [32*lanes-1:0] dot,
     output logic done,

@@ -13,20 +13,20 @@
 
 module adder_tree(
 
-    input logic clk,
-    input logic rst,
-    input logic freeze,
-    input logic capture,
+    input wire logic clk,
+    input wire logic rst,
+    input wire logic freeze,
+    input wire logic capture,
 
-    input logic signed [31:0] d0,
-    input logic signed [31:0] d1,
-    input logic signed [31:0] d2,
-    input logic signed [31:0] d3,
-    input logic signed [31:0] d4,
-    input logic signed [31:0] d5,
-    input logic signed [31:0] d6,
-    input logic signed [31:0] d7,
-    input logic signed [31:0] d8,
+    input wire logic signed [31:0] d0,
+    input wire logic signed [31:0] d1,
+    input wire logic signed [31:0] d2,
+    input wire logic signed [31:0] d3,
+    input wire logic signed [31:0] d4,
+    input wire logic signed [31:0] d5,
+    input wire logic signed [31:0] d6,
+    input wire logic signed [31:0] d7,
+    input wire logic signed [31:0] d8,
 
     output logic signed [31:0] sum
     

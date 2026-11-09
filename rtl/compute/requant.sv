@@ -18,22 +18,22 @@
 
 
 module requant(
-    input logic clk,
-    input logic rst,
+    input wire logic clk,
+    input wire logic rst,
 
-    input logic valid_in,
+    input wire logic valid_in,
 
-    input logic signed [31:0] acc0,
-    input logic signed [31:0] acc1,
-    input logic signed [31:0] acc2,
-    input logic signed [31:0] acc3,
+    input wire logic signed [31:0] acc0,
+    input wire logic signed [31:0] acc1,
+    input wire logic signed [31:0] acc2,
+    input wire logic signed [31:0] acc3,
 
-    input logic signed [31:0] bias0,
-    input logic signed [31:0] bias1,
-    input logic signed [31:0] bias2,
-    input logic signed [31:0] bias3,
+    input wire logic signed [31:0] bias0,
+    input wire logic signed [31:0] bias1,
+    input wire logic signed [31:0] bias2,
+    input wire logic signed [31:0] bias3,
 
-    input logic [5:0] shift,
+    input wire logic [5:0] shift,
 
     output logic [7:0] q0,
     output logic [7:0] q1,
