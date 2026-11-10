@@ -33,6 +33,8 @@ module argmax
 
 );
 
+localparam logic [5:0] max_c = max_classes[5:0];
+
 
 typedef enum logic [1:0] {
 
@@ -100,13 +102,15 @@ always_ff @(posedge clk, posedge rst) begin
 
                         if ({g, 2'b00} + 5'(l) < 5'(n_classes)) begin       //ensures only write into reg array when appropriate g and lane are called (any g*4 + l reater than total ouput types is invalid)
 
-                            regs[{g, 2b'00} + 5'(l)] <= logit[l] + bias[l];     
+                            regs[{g, 2'b00} + 5'(l)] <= logit[l] + bias[l];     
 
                         end
 
-                        if (last_in && (g != ((n_classes[4:0] - 5'd1) >> 2))) begin
+                    end
+
+                        if (last_in) begin
                                 
-                            if (n_classes == 6'd0 || n_classes > max_classes) begin
+                            if (n_classes == 6'd0 || n_classes > max_c || (5'(g) != ((n_classes[4:0] - 5'd1) >> 2))) begin //checks number of number of groups ent over by control is actually equivalent to number of classes
 
                                 err <= 1'b1;              //effectively a latched reg until the next time rst is raised high
                                 state <= COLLECT;
@@ -132,14 +136,14 @@ always_ff @(posedge clk, posedge rst) begin
                 
 
 
-            end
+            
 
 
             COMPARE: begin
 
-                if (reg[i] > best) begin
+                if (regs[i] > best) begin
 
-                    best <= reg[i];
+                    best <= regs[i];
                     best_idx <= i;
 
                 end

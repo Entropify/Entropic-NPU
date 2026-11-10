@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Tue Nov 10 06:22:59 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_argmax.vcd"
+[dumpfile_mtime] "Tue Nov 10 06:17:04 2026"
+[dumpfile_size] 24589
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_argmax.gtkw"
+[timestart] 0
+[size] 1628 626
+[pos] -1 -1
+*-18.000000 175000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_argmax.
+[treeopen] tb_argmax.dut.
+[sst_width] 297
+[signals_width] 265
+[sst_expanded] 1
+[sst_vpaned_height] 166
+@28
+tb_argmax.dut.clk
+tb_argmax.dut.rst
+tb_argmax.dut.valid_in
+tb_argmax.dut.last_in
+tb_argmax.dut.valid_out
+tb_argmax.dut.err
+@24
+tb_argmax.dut.g[1:0]
+@25
+tb_argmax.dut.n_classes[5:0]
+@24
+tb_argmax.dut.state[1:0]
+tb_argmax.dut.class_index[4:0]
+@420
+tb_argmax.dut.logit0[31:0]
+tb_argmax.dut.logit1[31:0]
+tb_argmax.dut.logit2[31:0]
+tb_argmax.dut.logit3[31:0]
+tb_argmax.dut.bias0[31:0]
+tb_argmax.dut.bias1[31:0]
+tb_argmax.dut.bias2[31:0]
+tb_argmax.dut.bias3[31:0]
+tb_argmax.dut.max_val[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
