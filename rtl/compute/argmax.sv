@@ -64,7 +64,7 @@ logic [4:0] best_idx; // where the highest output neuron value came from
 logic [4:0] i;
 logic [4:0] n_c;  //copy of n_classes
 
-always_ff (posedge clk, posedge rst) begin
+always_ff @(posedge clk, posedge rst) begin
 
 
     if (rst) begin
@@ -80,6 +80,102 @@ always_ff (posedge clk, posedge rst) begin
         best_idx <= 5'd0;
         i <= 5'd0;
         n_c <= 5'd0;
+
+    end
+
+    else begin
+
+        valid_out <= 1'b0;
+
+        case(state)
+
+
+            COLLECT: begin
+
+                if (valid_in) begin
+
+                    integer l;
+
+                    for (l = 0; l < 4; l++) begin
+
+                        if ({g, 2'b00} + 5'(l) < 5'(n_classes)) begin       //ensures only write into reg array when appropriate g and lane are called (any g*4 + l reater than total ouput types is invalid)
+
+                            regs[{g, 2b'00} + 5'(l)] <= logit[l] + bias[l];     
+
+                        end
+
+                        if (last_in && (g != ((n_classes[4:0] - 5'd1) >> 2))) begin
+                                
+                            if (n_classes == 6'd0 || n_classes > max_classes) begin
+
+                                err <= 1'b1;              //effectively a latched reg until the next time rst is raised high
+                                state <= COLLECT;
+
+                            end
+
+                            else begin
+
+                                n_c <= n_classes[4:0];
+                                i <= 5'd0;
+                                best <= 32'sh8000_0000; //most negative number, default (so any number is greater than it and will be considered a new best)
+                                best_idx <= 5'd0;
+                                state <= COMPARE;
+
+                            end
+
+                        end
+
+
+                    end
+
+                end
+                
+
+
+            end
+
+
+            COMPARE: begin
+
+                if (reg[i] > best) begin
+
+                    best <= reg[i];
+                    best_idx <= i;
+
+                end
+
+                if (i == n_c - 5'b1) begin
+
+                    state <= EMIT;
+
+                end
+
+
+                else begin
+
+                    i <= i + 5'b1;
+
+                end
+
+            end
+
+            EMIT: begin
+
+                valid_out <= 1'b1;
+
+                class_index <= best_idx;
+                max_val <= best;
+                state <= COLLECT;
+
+
+            end
+
+            default: state <= COLLECT;
+
+
+        endcase
+
+
 
     end
 
