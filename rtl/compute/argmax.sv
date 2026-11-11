@@ -102,7 +102,7 @@ always_ff @(posedge clk, posedge rst) begin
 
                         if ({g, 2'b00} + 5'(l) < 5'(n_classes)) begin       //ensures only write into reg array when appropriate g and lane are called (any g*4 + l reater than total ouput types is invalid)
 
-                            regs[{g, 2'b00} + 5'(l)] <= logit[l] + bias[l];     
+                            regs[{g, 2'b00} + 5'(l)] <= logit[l] + bias[l];
 
                         end
 
