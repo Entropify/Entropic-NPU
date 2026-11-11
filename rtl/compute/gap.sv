@@ -52,6 +52,7 @@ function automatic logic [7:0] sat(input logic [15:0] v);       //division funct
 
     logic [8:0] t;
     t = v[15:7];
+    t = v >> 7;
     sat = (t > 9'd255) ? 8'd255 : t[7:0];
 
 endfunction

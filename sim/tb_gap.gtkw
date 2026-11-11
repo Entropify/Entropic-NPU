@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Wed Nov 12 02:10:00 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_gap.vcd"
+[dumpfile_size] 500924
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_gap.gtkw"
+[timestart] 0
+[size] 1920 981
+[pos] -27 -24
+*-16.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_gap.
+[treeopen] tb_gap.dut.
+[sst_width] 297
+[signals_width] 265
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+tb_gap.dut.clk
+tb_gap.dut.rst
+tb_gap.dut.valid_in
+tb_gap.dut.first
+tb_gap.dut.last
+tb_gap.dut.valid_out
+@24
+tb_gap.dut.state
+tb_gap.dut.gc[1:0]
+tb_gap.dut.g[1:0]
+tb_gap.dut.g_out[1:0]
+@420
+tb_gap.dut.in0[7:0]
+tb_gap.dut.in1[7:0]
+tb_gap.dut.in2[7:0]
+tb_gap.dut.in3[7:0]
+tb_gap.dut.out0[7:0]
+tb_gap.dut.out1[7:0]
+tb_gap.dut.out2[7:0]
+tb_gap.dut.out3[7:0]
+@420
+tb_gap.dut.acc[0]
+tb_gap.dut.acc[1]
+tb_gap.dut.acc[2]
+tb_gap.dut.acc[3]
+tb_gap.dut.acc[4]
+tb_gap.dut.acc[5]
+tb_gap.dut.acc[6]
+tb_gap.dut.acc[7]
+tb_gap.dut.acc[8]
+tb_gap.dut.acc[9]
+tb_gap.dut.acc[10]
+tb_gap.dut.acc[11]
+tb_gap.dut.acc[12]
+tb_gap.dut.acc[13]
+tb_gap.dut.acc[14]
+tb_gap.dut.acc[15]
+[pattern_trace] 1
+[pattern_trace] 0
