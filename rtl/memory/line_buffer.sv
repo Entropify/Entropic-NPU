@@ -160,6 +160,45 @@ wire [31:0] q_top = (top_slot == 2'd0) ? q0 : (top_slot == 2'd1) ? q1 : q2;
 
 
 
+ // pick one channel out of the four in the word
+wire [7:0] b_live = q_live[8*ch_sel[1:0] +: 8];
+wire [7:0] b_mid  = q_mid [8*ch_sel[1:0] +: 8];
+wire [7:0] b_top  = q_top [8*ch_sel[1:0] +: 8];
+
+    // per-channel horizontal history, 2 deep, one set per row
+
+logic [7:0] h1_live [0:15], h2_live [0:15];
+logic [7:0] h1_mid  [0:15], h2_mid  [0:15];
+logic [7:0] h1_top  [0:15], h2_top  [0:15];
+
+
+always_ff @(posedge clk) begin
+
+    h1_live[ch_sel] <= b_live;
+    h2_live[ch_sel] <= h1_live[ch_sel];
+    h1_mid[ch_sel] <= b_mid;
+    h2_mid[ch_sel] <= h1_mid[ch_sel];
+    h1_top[ch_sel] <= b_top;
+    h2_top[ch_sel] <= h1_top[ch_sel];
+    
+end
+
+// the window: t = ky*3 + kx
+// ky=0 -> top row (R-2), ky=1 -> mid (R-1), ky=2 -> live (R)
+// kx=0 -> X-2, kx=1 -> X-1, kx=2 -> X
+
+assign tap[8*0 +: 8] = h2_top [ch_sel];
+assign tap[8*1 +: 8] = h1_top [ch_sel];
+assign tap[8*2 +: 8] = b_top;
+
+assign tap[8*3 +: 8] = h2_mid [ch_sel];
+assign tap[8*4 +: 8] = h1_mid [ch_sel];
+assign tap[8*5 +: 8] = b_mid;
+
+assign tap[8*6 +: 8] = h2_live[ch_sel];
+assign tap[8*7 +: 8] = h1_live[ch_sel];
+assign tap[8*8 +: 8] = b_live;
+
 
 
 endmodule
