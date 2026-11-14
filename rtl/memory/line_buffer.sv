@@ -21,7 +21,7 @@ group 3 (ch12-15)  1 word  1 word  1 word      1 word     <- 24 words
 
 
 module line_buffer #(
-    parameter int WMAX = 50;
+    parameter int WMAX = 50
 )
 (
 
