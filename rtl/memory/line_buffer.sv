@@ -38,10 +38,10 @@ module line_buffer #(
     input wire logic [7:0] din2,
     input wire logic [7:0] din3,
 
-    input wire logic advance,   // move one column
+    input wire logic advance, // move one column
     input wire logic [3:0] ch_sel,  // which input channel to expose
 
-    output logic valid_out,  // the 9 taps are meaningful
+    output logic valid_out,// the 9 taps are meaningful
     output logic [3:0] ch_out, // ch_sel, delayed with the data
     output logic [71:0] tap
 
@@ -118,9 +118,9 @@ wire we2 = valid_in && (wr_slot == 2'd2);
 
 //read 
 
-wire [AW-1:0] addr_r = {col, ch_sel[3:2]};  //column + which group to look at
+wire [AW-1:0] addr_r = {col, ch_sel[3:2]};  //column + which group to look at. REMEMEBR All three RAMs are read at the same address!!!!! WTFFF
 
-logic [31:0] q0, q1, q2;
+logic [31:0] q0, q1, q2; //diff rows read
 
 
 always_ff @(posedge clk) begin
@@ -162,14 +162,14 @@ wire [31:0] q_top = (top_slot == 2'd0) ? q0 : (top_slot == 2'd1) ? q1 : q2;
 
  // pick one channel out of the four in the word
 wire [7:0] b_live = q_live[8*ch_sel[1:0] +: 8];
-wire [7:0] b_mid  = q_mid [8*ch_sel[1:0] +: 8];
-wire [7:0] b_top  = q_top [8*ch_sel[1:0] +: 8];
+wire [7:0] b_mid = q_mid[8*ch_sel[1:0] +: 8];
+wire [7:0] b_top = q_top[8*ch_sel[1:0] +: 8];
 
-    // per-channel horizontal history, 2 deep, one set per row
+// per-channel horizontal history, 2 deep, one set per row
 
 logic [7:0] h1_live [0:15], h2_live [0:15];
-logic [7:0] h1_mid  [0:15], h2_mid  [0:15];
-logic [7:0] h1_top  [0:15], h2_top  [0:15];
+logic [7:0] h1_mid [0:15], h2_mid [0:15];
+logic [7:0] h1_top [0:15], h2_top [0:15];
 
 
 always_ff @(posedge clk) begin
@@ -187,7 +187,7 @@ end
 // ky=0 -> top row (R-2), ky=1 -> mid (R-1), ky=2 -> live (R)
 // kx=0 -> X-2, kx=1 -> X-1, kx=2 -> X
 
-assign tap[8*0 +: 8] = h2_top [ch_sel];
+assign tap[0 +: 8] = h2_top [ch_sel];
 assign tap[8*1 +: 8] = h1_top [ch_sel];
 assign tap[8*2 +: 8] = b_top;
 
@@ -199,6 +199,8 @@ assign tap[8*6 +: 8] = h2_live[ch_sel];
 assign tap[8*7 +: 8] = h1_live[ch_sel];
 assign tap[8*8 +: 8] = b_live;
 
+assign valid_out = warm && (col >= CW'(2));
+assign ch_out = ch_sel;
 
 
 endmodule
