@@ -28,6 +28,8 @@ module line_buffer #(
     input wire logic clk,
     input wire logic rst,
 
+    input wire logic sweep,
+
     input wire logic [5:0] W_run,  //map width this layer from descriptor
     input wire logic map_start,
 
@@ -45,13 +47,11 @@ module line_buffer #(
     output logic [3:0] ch_out, // ch_sel, delayed with the data
     output logic [71:0] tap
 
-
 );
 
 localparam int CW = $clog2(WMAX); //ceiling log to figure out how many bits to store the address of each column
 localparam int WORDS = 4 * WMAX; //4 groups (g) * number of columns ina row
 localparam int AW = CW + 2; // ts full ram adress = row address width + 2 (since 4 groups takes up 2 bits)
-
 
 
 logic [CW-1:0] col;
@@ -174,13 +174,16 @@ logic [7:0] h1_top [0:15], h2_top [0:15];
 
 always_ff @(posedge clk) begin
 
-    h1_live[ch_sel] <= b_live;
-    h2_live[ch_sel] <= h1_live[ch_sel];
-    h1_mid[ch_sel] <= b_mid;
-    h2_mid[ch_sel] <= h1_mid[ch_sel];
-    h1_top[ch_sel] <= b_top;
-    h2_top[ch_sel] <= h1_top[ch_sel];
-    
+    if (sweep) begin
+
+        h1_live[ch_sel] <= b_live;
+        h2_live[ch_sel] <= h1_live[ch_sel];
+        h1_mid[ch_sel] <= b_mid;
+        h2_mid[ch_sel] <= h1_mid[ch_sel];
+        h1_top[ch_sel] <= b_top;
+        h2_top[ch_sel] <= h1_top[ch_sel];
+    end
+
 end
 
 // the window: t = ky*3 + kx
@@ -199,7 +202,7 @@ assign tap[8*6 +: 8] = h2_live[ch_sel];
 assign tap[8*7 +: 8] = h1_live[ch_sel];
 assign tap[8*8 +: 8] = b_live;
 
-assign valid_out = warm && (col >= CW'(2));
+assign valid_out = warm && (col >= CW'(2)) && sweep;
 assign ch_out = ch_sel;
 
 

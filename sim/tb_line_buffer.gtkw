@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Fri Nov 20 05:52:16 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_line_buffer.vcd"
+[dumpfile_mtime] "Fri Nov 20 05:50:52 2026"
+[dumpfile_size] 4215557
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_line_buffer.gtkw"
+[timestart] 0
+[size] 1920 981
+[pos] -1 -1
+*-17.000000 332900 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_line_buffer.
+[treeopen] tb_line_buffer.dut.
+[sst_width] 297
+[signals_width] 192
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+tb_line_buffer.dut.clk
+tb_line_buffer.dut.rst
+tb_line_buffer.dut.map_start
+tb_line_buffer.dut.valid_in
+tb_line_buffer.dut.advance
+tb_line_buffer.dut.sweep
+tb_line_buffer.dut.valid_out
+@24
+tb_line_buffer.dut.rows_seen[1:0]
+tb_line_buffer.dut.W_run[5:0]
+tb_line_buffer.dut.wr_slot[1:0]
+tb_line_buffer.dut.mid_slot[1:0]
+tb_line_buffer.dut.top_slot[1:0]
+tb_line_buffer.dut.g[1:0]
+tb_line_buffer.dut.ch_sel[3:0]
+tb_line_buffer.dut.ch_out[3:0]
+tb_line_buffer.dut.we0
+tb_line_buffer.dut.we1
+tb_line_buffer.dut.we2
+@420
+tb_line_buffer.dut.wdata[31:0]
+tb_line_buffer.dut.q0[31:0]
+tb_line_buffer.dut.q1[31:0]
+tb_line_buffer.dut.q2[31:0]
+tb_line_buffer.dut.q_live[31:0]
+tb_line_buffer.dut.q_mid[31:0]
+tb_line_buffer.dut.q_top[31:0]
+tb_line_buffer.dut.b_live[7:0]
+tb_line_buffer.dut.b_mid[7:0]
+tb_line_buffer.dut.b_top[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
