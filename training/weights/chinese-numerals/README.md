@@ -6,8 +6,10 @@ Each directory contains `int_model.npz` (arrays `L{i}_W` and `L{i}_b`) and `mode
 
 | Model | int8 weight bytes (excluding biases/container overhead) | Clean accuracy | Distorted accuracy |
 |---|---:|---:|---:|
-| G2 | 6,152 | 98.00% | 85.25% |
-| G3 | 15,368 | 98.70% | 93.85% |
+| `3-conv/G2-gap/` (3 conv layers) | 6,152 | 98.00% | 85.25% |
+| `4-conv/G3-gap/` (4 conv layers) | 15,368 | 98.70% | 93.85% |
+
+G2/G3 are experiment names, not layer counts. No two-conv Chinese checkpoint is included; the original two-conv MNIST checkpoint is in `../mnist/2-conv/beta-fc/`.
 
 Evaluation: 2,000 Chinese MNIST images from held-out writers 81–100, 200 examples per class. Writers 1–70 trained the models; writers 71–80 supplied validation. Single training seed. Distorted evaluation uses fixed synthetic augmentation, not handwritten app input. Integer and QAT predictions agreed on all clean and distorted test examples.
 
