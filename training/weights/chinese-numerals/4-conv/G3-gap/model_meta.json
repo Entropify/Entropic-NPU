@@ -1,0 +1,339 @@
+{
+  "stage": "G3",
+  "contract": "1.0-draft",
+  "input_exp": 8,
+  "layers": [
+    {
+      "m": 6,
+      "n_in": 8,
+      "type": "conv",
+      "pool": 1,
+      "n_out": 5,
+      "shift": 9,
+      "W_shape": [
+        8,
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "m": 6,
+      "n_in": 5,
+      "type": "conv",
+      "pool": 1,
+      "n_out": 3,
+      "shift": 8,
+      "W_shape": [
+        16,
+        8,
+        3,
+        3
+      ]
+    },
+    {
+      "m": 7,
+      "n_in": 3,
+      "type": "conv",
+      "pool": 0,
+      "n_out": 2,
+      "shift": 8,
+      "W_shape": [
+        32,
+        16,
+        3,
+        3
+      ]
+    },
+    {
+      "m": 8,
+      "n_in": 2,
+      "type": "conv",
+      "pool": 0,
+      "n_out": 1,
+      "shift": 9,
+      "W_shape": [
+        32,
+        32,
+        3,
+        3
+      ]
+    },
+    {
+      "m": 12,
+      "n_in": 1,
+      "type": "sumfc",
+      "win": 7,
+      "W_shape": [
+        10,
+        32
+      ]
+    }
+  ],
+  "weight_bytes": 15368,
+  "results": {
+    "test_clean": {
+      "int_acc": 98.7,
+      "qat_float_acc": 98.7,
+      "int_vs_qat_agree": 100.0,
+      "per_class_int": {
+        "0": 96.0,
+        "1": 100.0,
+        "2": 98.5,
+        "3": 100.0,
+        "4": 99.0,
+        "5": 96.5,
+        "6": 99.5,
+        "7": 99.5,
+        "8": 99.5,
+        "9": 98.5
+      },
+      "float_noquant_acc": 98.7
+    },
+    "test_worst": {
+      "int_acc": 93.85,
+      "qat_float_acc": 93.85,
+      "int_vs_qat_agree": 100.0,
+      "per_class_int": {
+        "0": 94.0,
+        "1": 100.0,
+        "2": 93.0,
+        "3": 87.5,
+        "4": 94.5,
+        "5": 90.5,
+        "6": 96.0,
+        "7": 92.0,
+        "8": 97.5,
+        "9": 93.5
+      },
+      "float_noquant_acc": 94.1
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "qat": false,
+      "loss": 2.3228,
+      "train_aug": 11.66,
+      "val_clean": 10.0,
+      "val_worst": 11.0,
+      "sec": 6.0
+    },
+    {
+      "epoch": 2,
+      "qat": false,
+      "loss": 2.243,
+      "train_aug": 15.51,
+      "val_clean": 29.0,
+      "val_worst": 26.0,
+      "sec": 5.7
+    },
+    {
+      "epoch": 3,
+      "qat": false,
+      "loss": 1.8093,
+      "train_aug": 34.79,
+      "val_clean": 56.4,
+      "val_worst": 40.0,
+      "sec": 5.8
+    },
+    {
+      "epoch": 4,
+      "qat": false,
+      "loss": 1.2852,
+      "train_aug": 54.27,
+      "val_clean": 88.9,
+      "val_worst": 61.4,
+      "sec": 5.0
+    },
+    {
+      "epoch": 5,
+      "qat": false,
+      "loss": 0.8809,
+      "train_aug": 70.91,
+      "val_clean": 94.7,
+      "val_worst": 76.9,
+      "sec": 4.9
+    },
+    {
+      "epoch": 6,
+      "qat": false,
+      "loss": 0.6882,
+      "train_aug": 77.62,
+      "val_clean": 99.5,
+      "val_worst": 85.1,
+      "sec": 5.3
+    },
+    {
+      "epoch": 7,
+      "qat": false,
+      "loss": 0.5903,
+      "train_aug": 80.8,
+      "val_clean": 98.4,
+      "val_worst": 83.9,
+      "sec": 6.6
+    },
+    {
+      "epoch": 8,
+      "qat": false,
+      "loss": 0.3514,
+      "train_aug": 88.59,
+      "val_clean": 95.9,
+      "val_worst": 86.5,
+      "sec": 6.9
+    },
+    {
+      "epoch": 9,
+      "qat": false,
+      "loss": 0.3056,
+      "train_aug": 90.41,
+      "val_clean": 99.2,
+      "val_worst": 90.3,
+      "sec": 7.1
+    },
+    {
+      "epoch": 10,
+      "qat": false,
+      "loss": 0.2717,
+      "train_aug": 91.97,
+      "val_clean": 100.0,
+      "val_worst": 92.9,
+      "sec": 6.3
+    },
+    {
+      "epoch": 11,
+      "qat": false,
+      "loss": 0.2242,
+      "train_aug": 93.4,
+      "val_clean": 98.6,
+      "val_worst": 90.1,
+      "sec": 6.5
+    },
+    {
+      "epoch": 12,
+      "qat": false,
+      "loss": 0.2189,
+      "train_aug": 93.08,
+      "val_clean": 98.8,
+      "val_worst": 91.6,
+      "sec": 6.9
+    },
+    {
+      "epoch": 13,
+      "qat": false,
+      "loss": 0.2146,
+      "train_aug": 93.4,
+      "val_clean": 99.8,
+      "val_worst": 93.4,
+      "sec": 6.3
+    },
+    {
+      "epoch": 14,
+      "qat": false,
+      "loss": 0.1987,
+      "train_aug": 93.95,
+      "val_clean": 99.8,
+      "val_worst": 94.2,
+      "sec": 6.5
+    },
+    {
+      "epoch": 15,
+      "qat": false,
+      "loss": 0.166,
+      "train_aug": 95.05,
+      "val_clean": 99.9,
+      "val_worst": 95.1,
+      "sec": 6.0
+    },
+    {
+      "epoch": 16,
+      "qat": false,
+      "loss": 0.1579,
+      "train_aug": 95.46,
+      "val_clean": 99.8,
+      "val_worst": 95.4,
+      "sec": 6.3
+    },
+    {
+      "epoch": 17,
+      "qat": false,
+      "loss": 0.1495,
+      "train_aug": 95.82,
+      "val_clean": 99.8,
+      "val_worst": 94.8,
+      "sec": 6.4
+    },
+    {
+      "epoch": 18,
+      "qat": false,
+      "loss": 0.1539,
+      "train_aug": 95.72,
+      "val_clean": 99.9,
+      "val_worst": 95.0,
+      "sec": 6.2
+    },
+    {
+      "epoch": 19,
+      "qat": false,
+      "loss": 0.1561,
+      "train_aug": 95.46,
+      "val_clean": 99.9,
+      "val_worst": 95.1,
+      "sec": 6.3
+    },
+    {
+      "epoch": 20,
+      "qat": false,
+      "loss": 0.1511,
+      "train_aug": 96.08,
+      "val_clean": 99.9,
+      "val_worst": 95.2,
+      "sec": 6.5
+    },
+    {
+      "epoch": 21,
+      "qat": true,
+      "loss": 0.1426,
+      "train_aug": 95.98,
+      "val_clean": 99.9,
+      "val_worst": 95.3,
+      "sec": 7.2
+    },
+    {
+      "epoch": 22,
+      "qat": true,
+      "loss": 0.1403,
+      "train_aug": 95.96,
+      "val_clean": 99.9,
+      "val_worst": 95.5,
+      "sec": 7.3
+    },
+    {
+      "epoch": 23,
+      "qat": true,
+      "loss": 0.1412,
+      "train_aug": 96.35,
+      "val_clean": 99.9,
+      "val_worst": 95.0,
+      "sec": 7.7
+    },
+    {
+      "epoch": 24,
+      "qat": true,
+      "loss": 0.1447,
+      "train_aug": 95.88,
+      "val_clean": 99.9,
+      "val_worst": 95.4,
+      "sec": 7.7
+    },
+    {
+      "epoch": 25,
+      "qat": true,
+      "loss": 0.1483,
+      "train_aug": 95.89,
+      "val_clean": 99.9,
+      "val_worst": 95.3,
+      "sec": 6.8
+    }
+  ]
+}
