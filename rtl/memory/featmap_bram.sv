@@ -20,10 +20,8 @@ module featmap_bram
 
     input wire logic [13:0] raddr, //14 bits wide for same reason as the w_addr
     output logic [31:0] rdata
-    )
+    );
 
-
-    localparam int TOTAL = 2 * DEPTH; //both banks
 
     logic [31:0] mem_a [0:DEPTH-1];
     logic [31:0] mem_b [0:DEPTH-1];
