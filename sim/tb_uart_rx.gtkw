@@ -1,0 +1,30 @@
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_uart_rx.vcd"
+[dumpfile_mtime] "1"
+[dumpfile_size] "1"
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_uart_rx.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-19.183594 0 -1 -1 -1 -1 -1
+@28
+tb_uart_rx.clk
+@200
+-[group] "wire"
+@28
+tb_uart_rx.rx
+tb_uart_rx.dut.rx_stable
+tb_uart_rx.dut.start
+-[group] "fsm  (0=IDLE 1=START 2=DATA 3=STOP)"
+@24
+tb_uart_rx.dut.state[1:0]
+-[group] "timer"
+@24
+tb_uart_rx.dut.count[9:0]
+tb_uart_rx.dut.bit_index[2:0]
+-[group] "output"
+@28
+tb_uart_rx.valid
+@22
+tb_uart_rx.data[7:0]
+-
+@842

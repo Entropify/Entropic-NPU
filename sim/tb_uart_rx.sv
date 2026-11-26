@@ -48,6 +48,17 @@ module tb_uart_rx;
         .valid (valid)
     );
 
+    // ---- monitor: every valid pulse becomes a queued byte -----------------
+    logic [7:0] rxfifo [$];
+    int         n_pulses = 0;
+
+    always @(posedge clk) begin
+        if (valid) begin
+            rxfifo.push_back(data);
+            n_pulses++;
+        end
+    end
+
     int checks = 0;
     int fails  = 0;
 
@@ -85,30 +96,32 @@ module tb_uart_rx;
     // ---- checking --------------------------------------------------------
     task automatic expect_byte(input logic [7:0] e, input string what);
         int t = 0;
-        while (!valid && t < 12*CPB) begin
+        while (rxfifo.size() == 0 && t < 4*CPB) begin
             tick();
             t++;
         end
         checks++;
-        if (!valid) begin
+        if (rxfifo.size() == 0) begin
             fails++;
-            $display("  FAIL [%s] no byte within %0d clocks (wanted %02x)", what, 12*CPB, e);
-        end else if (data !== e) begin
-            fails++;
-            $display("  FAIL [%s] got %02x wanted %02x", what, data, e);
+            $display("  FAIL [%s] no byte received (wanted %02x)", what, e);
+        end else begin
+            automatic logic [7:0] g = rxfifo.pop_front();
+            if (g !== e) begin
+                fails++;
+                $display("  FAIL [%s] got %02x wanted %02x", what, g, e);
+            end
         end
-        tick();                             // step past the pulse
     endtask
 
     task automatic expect_no_byte(input int nclk, input string what);
-        for (int i = 0; i < nclk; i++) begin
-            tick();
-            checks++;
-            if (valid) begin
-                fails++;
-                if (fails <= 20)
-                    $display("  FAIL [%s] unexpected byte %02x at t=%0t", what, data, $time);
-            end
+        int n0 = rxfifo.size();
+        repeat (nclk) tick();
+        checks++;
+        if (rxfifo.size() != n0) begin
+            fails++;
+            $display("  FAIL [%s] %0d unexpected byte(s), first %02x",
+                     what, rxfifo.size() - n0, rxfifo[n0]);
+            rxfifo.delete();
         end
     endtask
 
@@ -168,22 +181,27 @@ module tb_uart_rx;
         expect_no_byte(5000, "idle");
 
         // ------------------------------------------------------------------
-        $display("[7] valid is exactly one clock wide");
-        send_byte(8'h96);
-        expect_byte(8'h96, "pulse test");
-        // after expect_byte we are one clock past the pulse
+        $display("[7] pulse count matches byte count, then recovery");
         checks++;
-        if (valid !== 1'b0) begin fails++; $display("  FAIL valid still high after the pulse"); end
+        if (n_pulses != 9) begin
+            fails++;
+            $display("  FAIL expected 9 valid pulses, saw %0d (a level instead of a pulse?)",
+                     n_pulses);
+        end
 
         // and the receiver still works afterwards
         send_byte(8'h69);
         expect_byte(8'h69, "recovery");
 
+        // one more, so the pulse counter is checked against a later total too
+        send_byte(8'h96);
+        expect_byte(8'h96, "recovery 2");
+
         // ------------------------------------------------------------------
         $display("");
         $display("checks: %0d   failures: %0d", checks, fails);
 
-        if (checks < 5000) $fatal(1, "only %0d checks ran", checks);
+        if (checks < 16) $fatal(1, "only %0d checks ran", checks);
         if (fails != 0)    $fatal(1, "%0d failures", fails);
 
         $display("RESULT: ALL PASS");

@@ -145,7 +145,7 @@ always_ff @(posedge clk, posedge rst) begin
 
             if (tick) begin
 
-                sr[bit_index] <= rx_stable;  // LSB first
+                sr[bit_index] <= rx_stable;  // LSB first in sr
                 count <= 10'(RELOAD);
                     
                 if (bit_index == 3'd7) state <= STOP;
