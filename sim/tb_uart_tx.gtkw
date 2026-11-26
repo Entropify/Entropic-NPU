@@ -1,0 +1,29 @@
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_uart_tx.vcd"
+[dumpfile_mtime] "1"
+[dumpfile_size] "1"
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_uart_tx.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-19.183594 0 -1 -1 -1 -1 -1
+@28
+tb_uart_tx.clk
+@200
+-[group] "handshake"
+@28
+tb_uart_tx.send
+tb_uart_tx.busy
+@22
+tb_uart_tx.data[7:0]
+-[group] "wire"
+@28
+tb_uart_tx.tx
+-[group] "shift register  {stop, data[7:0], start}"
+@22
+tb_uart_tx.dut.sr[9:0]
+@24
+tb_uart_tx.dut.bitcnt[3:0]
+tb_uart_tx.dut.div[9:0]
+tb_uart_tx.dut.tick
+-
+@842
