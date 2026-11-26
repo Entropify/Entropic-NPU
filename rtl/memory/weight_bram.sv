@@ -25,9 +25,8 @@ module weight_bram
     //bank bit 0 is bank a read, bank bit 1 is bank b read
     output logic [287:0] r_data
 
-)
+);
 
-logic [287:0] mem [0:]
 
 localparam int DEPTH = 1 << BEATBITS; //128 max beats, 128 max depth per bank type shtttt
 
@@ -35,23 +34,26 @@ logic [287:0] bank_a [0:DEPTH-1];
 
 logic [287:0] bank_b [0:DEPTH-1];
 
+wire [BEATBITS-1:0] wbeat = w_addr[BEATBITS-1:0];
+wire [BEATBITS-1:0] rbeat = r_addr[BEATBITS-1:0];
+
 always_ff @(posedge clk) begin
 
-    if (w_en && !waddr[BEATBITS]) begin
+    if (w_en && !w_addr[BEATBITS]) begin
 
-        bank_a[waddr[BEATBITS - 1 : 0]] <= w_data;
-
-    end
-
-    if (w_en && waddr[BEATBITS]) begin
-
-        bank_b[waddr[BEATBITS - 1 : 0]] <= w_data;
+        bank_a[wbeat] <= w_data;
 
     end
 
-    r_data <= (r_addr[BEATBITS]) ? bank_b[waddr[BEATBITS - 1 : 0]]
+    if (w_en && w_addr[BEATBITS]) begin
 
-                                : bank_a[waddr[BEATBITS - 1 : 0]];
+        bank_b[wbeat] <= w_data;
+
+    end
+
+    r_data <= (r_addr[BEATBITS]) ? bank_b[rbeat]
+
+                                : bank_a[rbeat];
 
 
 end
