@@ -1,11 +1,19 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Thu Nov 26 09:31:02 2026
+[*]
 [dumpfile] "/mnt/x/Entropic-NPU/sim/tb_uart_rx.vcd"
-[dumpfile_mtime] "1"
-[dumpfile_size] "1"
+[dumpfile_mtime] "Thu Nov 26 09:27:12 2026"
+[dumpfile_size] 5904662
 [savefile] "/mnt/x/Entropic-NPU/sim/tb_uart_rx.gtkw"
 [timestart] 0
-[size] 1600 900
+[size] 2030 900
 [pos] -1 -1
-*-19.183594 0 -1 -1 -1 -1 -1
+*-25.083593 59005000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 297
+[signals_width] 403
+[sst_expanded] 1
+[sst_vpaned_height] 261
 @28
 tb_uart_rx.clk
 @200
@@ -14,17 +22,33 @@ tb_uart_rx.clk
 tb_uart_rx.rx
 tb_uart_rx.dut.rx_stable
 tb_uart_rx.dut.start
+@200
 -[group] "fsm  (0=IDLE 1=START 2=DATA 3=STOP)"
 @24
 tb_uart_rx.dut.state[1:0]
+@200
 -[group] "timer"
 @24
 tb_uart_rx.dut.count[9:0]
 tb_uart_rx.dut.bit_index[2:0]
+@200
 -[group] "output"
+@800022
+tb_uart_rx.data[7:0]
+@28
+(0)tb_uart_rx.data[7:0]
+(1)tb_uart_rx.data[7:0]
+(2)tb_uart_rx.data[7:0]
+(3)tb_uart_rx.data[7:0]
+(4)tb_uart_rx.data[7:0]
+(5)tb_uart_rx.data[7:0]
+(6)tb_uart_rx.data[7:0]
+(7)tb_uart_rx.data[7:0]
+@1001200
+-group_end
 @28
 tb_uart_rx.valid
-@22
-tb_uart_rx.data[7:0]
+@200
 -
-@842
+[pattern_trace] 1
+[pattern_trace] 0
