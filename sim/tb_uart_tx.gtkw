@@ -1,11 +1,20 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Thu Nov 26 11:08:57 2026
+[*]
 [dumpfile] "/mnt/x/Entropic-NPU/sim/tb_uart_tx.vcd"
-[dumpfile_mtime] "1"
-[dumpfile_size] "1"
+[dumpfile_mtime] "Thu Nov 26 11:07:49 2026"
+[dumpfile_size] 5711203
 [savefile] "/mnt/x/Entropic-NPU/sim/tb_uart_tx.gtkw"
-[timestart] 0
+[timestart] 290916000
 [size] 1600 900
 [pos] -1 -1
-*-19.183594 0 -1 -1 -1 -1 -1
+*-19.183594 291773000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_uart_tx.
+[sst_width] 297
+[signals_width] 430
+[sst_expanded] 1
+[sst_vpaned_height] 261
 @28
 tb_uart_tx.clk
 @200
@@ -15,15 +24,20 @@ tb_uart_tx.send
 tb_uart_tx.busy
 @22
 tb_uart_tx.data[7:0]
+@200
 -[group] "wire"
 @28
 tb_uart_tx.tx
+@200
 -[group] "shift register  {stop, data[7:0], start}"
 @22
 tb_uart_tx.dut.sr[9:0]
 @24
-tb_uart_tx.dut.bitcnt[3:0]
 tb_uart_tx.dut.div[9:0]
 tb_uart_tx.dut.tick
+@200
 -
-@842
+@23
+tb_uart_tx.dut.bit_count[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
