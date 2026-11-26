@@ -1,28 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Thu Nov 26 07:42:06 2026
+[*]
 [dumpfile] "/mnt/x/Entropic-NPU/sim/tb_weight_bram.vcd"
-[dumpfile_mtime] "1"
-[dumpfile_size] "1"
+[dumpfile_mtime] "Thu Nov 26 07:34:44 2026"
+[dumpfile_size] 383598
 [savefile] "/mnt/x/Entropic-NPU/sim/tb_weight_bram.gtkw"
 [timestart] 0
-[size] 1600 900
-[pos] -1 -1
-*-19.183594 0 -1 -1 -1 -1 -1
+[size] 2560 1328
+[pos] -27 -24
+*-19.183594 672000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_weight_bram.
+[sst_width] 297
+[signals_width] 516
+[sst_expanded] 1
+[sst_vpaned_height] 411
 @28
 tb_weight_bram.clk
 @200
 -[group] "control"
 @28
 tb_weight_bram.w_en
-tb_weight_bram.dut.w_addr[7]
-tb_weight_bram.dut.r_addr[7]
+@200
 -[group] "write port"
 @24
 tb_weight_bram.w_addr[7:0]
+@200
 -[group] "read port"
 @24
 tb_weight_bram.r_addr[7:0]
+@200
 -[group] "beat data (288 bits = 9 taps x 4 lanes)"
 @22
 tb_weight_bram.w_data[287:0]
 tb_weight_bram.r_data[287:0]
+@200
+-hi mom
 -
-@842
+[pattern_trace] 1
+[pattern_trace] 0
