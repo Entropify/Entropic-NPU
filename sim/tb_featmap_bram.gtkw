@@ -1,0 +1,30 @@
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_featmap_bram.vcd"
+[dumpfile_mtime] "1"
+[dumpfile_size] "1"
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_featmap_bram.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-19.183594 0 -1 -1 -1 -1 -1
+@28
+tb_featmap_bram.clk
+@22
+tb_featmap_bram.dut.rdata[31:0]
+@200
+-[group] "control"
+@28
+tb_featmap_bram.w_en
+tb_featmap_bram.w_addr[13]
+tb_featmap_bram.raddr[13]
+-[group] "write port"
+@24
+tb_featmap_bram.w_addr[13:0]
+@22
+tb_featmap_bram.w_data[31:0]
+-[group] "read port"
+@24
+tb_featmap_bram.raddr[13:0]
+@22
+tb_featmap_bram.rdata[31:0]
+-
+@842
