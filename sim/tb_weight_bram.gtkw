@@ -1,0 +1,28 @@
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_weight_bram.vcd"
+[dumpfile_mtime] "1"
+[dumpfile_size] "1"
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_weight_bram.gtkw"
+[timestart] 0
+[size] 1600 900
+[pos] -1 -1
+*-19.183594 0 -1 -1 -1 -1 -1
+@28
+tb_weight_bram.clk
+@200
+-[group] "control"
+@28
+tb_weight_bram.w_en
+tb_weight_bram.dut.w_addr[7]
+tb_weight_bram.dut.r_addr[7]
+-[group] "write port"
+@24
+tb_weight_bram.w_addr[7:0]
+-[group] "read port"
+@24
+tb_weight_bram.r_addr[7:0]
+-[group] "beat data (288 bits = 9 taps x 4 lanes)"
+@22
+tb_weight_bram.w_data[287:0]
+tb_weight_bram.r_data[287:0]
+-
+@842
