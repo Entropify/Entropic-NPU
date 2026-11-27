@@ -1,0 +1,37 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Fri Nov 27 03:24:44 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_crc32.vcd"
+[dumpfile_mtime] "Fri Nov 27 03:23:56 2026"
+[dumpfile_size] 8478
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_crc32.gtkw"
+[timestart] 0
+[size] 1400 800
+[pos] -1 -1
+*-14.983594 80900 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 297
+[signals_width] 278
+[sst_expanded] 1
+[sst_vpaned_height] 227
+@28
+tb_crc32.clk
+@200
+-[group] "control"
+@28
+tb_crc32.init
+tb_crc32.valid
+@22
+tb_crc32.data[7:0]
+@200
+-[group] "register (raw)"
+@22
+tb_crc32.dut.crc_r[31:0]
+@200
+-[group] "output (complemented)"
+@22
+tb_crc32.crc[31:0]
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0
