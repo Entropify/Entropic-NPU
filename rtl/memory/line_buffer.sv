@@ -64,8 +64,13 @@ logic [1:0] top_slot; // R -2
 wire row_done = advance && (col == CW'(W_run -1)); // high when last column of this row
 wire warm = (rows_seen == 2'd2);  // rows R-2 and R-1 exist
 
+(* ram_style = "distributed" *)
 logic [31:0] ram0 [0:WORDS-1];
+
+(* ram_style = "distributed" *)
 logic [31:0] ram1 [0:WORDS-1];
+
+(* ram_style = "distributed" *)
 logic [31:0] ram2 [0:WORDS-1];
 
 

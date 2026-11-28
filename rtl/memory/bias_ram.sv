@@ -14,6 +14,7 @@ module bias_ram (
 
 );
 
+    (* ram_style = "distributed" *)
     logic [127:0] mem [0:63];
 
     always_ff @(posedge clk) begin

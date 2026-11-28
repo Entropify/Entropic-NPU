@@ -15,6 +15,7 @@ module desc_ram (
 );
 
 
+    (* ram_style = "distributed" *)
     logic [127:0] mem [0:15];
 
     always_ff @(posedge clk) begin

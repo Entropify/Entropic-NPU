@@ -30,8 +30,10 @@ module weight_bram
 
 localparam int DEPTH = 1 << BEATBITS; //128 max beats, 128 max depth per bank type shtttt
 
+(* ram_style = "block" *)
 logic [287:0] bank_a [0:DEPTH-1];
 
+(* ram_style = "block" *)
 logic [287:0] bank_b [0:DEPTH-1];
 
 wire [BEATBITS-1:0] wbeat = w_addr[BEATBITS-1:0];

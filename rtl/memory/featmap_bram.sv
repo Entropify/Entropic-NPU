@@ -23,7 +23,10 @@ module featmap_bram
     );
 
 
+    (* ram_style = "block" *)
     logic [31:0] mem_a [0:DEPTH-1];
+
+    (* ram_style = "block" *)
     logic [31:0] mem_b [0:DEPTH-1];
 
 
