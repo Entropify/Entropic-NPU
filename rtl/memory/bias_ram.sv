@@ -2,7 +2,7 @@
 `timescale 1ns/1ps
 
 module bias_ram (
-    
+
     input wire logic clk,
 
     input wire logic w_en,

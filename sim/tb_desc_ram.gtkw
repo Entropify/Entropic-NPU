@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Sat Nov 28 09:04:37 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_desc_ram.vcd"
+[dumpfile_mtime] "Sat Nov 28 08:38:01 2026"
+[dumpfile_size] 18356
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_desc_ram.gtkw"
+[timestart] 0
+[size] 1927 902
+[pos] -1 -1
+*-15.000000 86500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_desc_ram.
+[sst_width] 297
+[signals_width] 211
+[sst_expanded] 1
+[sst_vpaned_height] 262
+@28
+tb_desc_ram.dut.clk
+@22
+tb_desc_ram.dut.mem[0][127:0]
+tb_desc_ram.dut.mem[1][127:0]
+tb_desc_ram.dut.mem[2][127:0]
+tb_desc_ram.dut.mem[3][127:0]
+tb_desc_ram.dut.mem[4][127:0]
+tb_desc_ram.dut.mem[5][127:0]
+tb_desc_ram.dut.mem[6][127:0]
+tb_desc_ram.dut.mem[7][127:0]
+tb_desc_ram.dut.mem[8][127:0]
+tb_desc_ram.dut.mem[9][127:0]
+tb_desc_ram.dut.mem[10][127:0]
+tb_desc_ram.dut.mem[11][127:0]
+tb_desc_ram.dut.mem[12][127:0]
+tb_desc_ram.dut.mem[13][127:0]
+tb_desc_ram.dut.mem[14][127:0]
+tb_desc_ram.dut.mem[15][127:0]
+tb_desc_ram.dut.r_addr[3:0]
+tb_desc_ram.dut.r_data[127:0]
+tb_desc_ram.dut.w_addr[3:0]
+tb_desc_ram.dut.w_data[127:0]
+@28
+tb_desc_ram.dut.w_en
+[pattern_trace] 1
+[pattern_trace] 0

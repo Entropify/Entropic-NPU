@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.126 (w)1999-2026 BSI
+[*] Sat Nov 28 08:44:08 2026
+[*]
+[dumpfile] "/mnt/x/Entropic-NPU/sim/tb_bias_ram.vcd"
+[dumpfile_mtime] "Sat Nov 28 08:36:49 2026"
+[dumpfile_size] 40607
+[savefile] "/mnt/x/Entropic-NPU/sim/tb_bias_ram.gtkw"
+[timestart] 0
+[size] 1578 1088
+[pos] -1 -1
+*-15.000000 122800 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_bias_ram.
+[sst_width] 297
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 327
+@28
+tb_bias_ram.dut.clk
+@22
+tb_bias_ram.dut.r_addr[5:0]
+tb_bias_ram.dut.r_data[127:0]
+tb_bias_ram.dut.w_addr[5:0]
+tb_bias_ram.dut.w_data[127:0]
+@28
+tb_bias_ram.dut.w_en
+[pattern_trace] 1
+[pattern_trace] 0
